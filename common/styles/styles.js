@@ -1,5 +1,5 @@
-export const THEME_COLORS = {
-  primary: "#26875C",
+export const MAIN_COLORS = {
+  green: "rgba(38, 135, 92, 0.8)",
   white: "#FFFFFF",
 };
 
