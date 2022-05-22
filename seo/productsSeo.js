@@ -3,7 +3,7 @@ import Head from "next/head";
 function Seo() {
   return (
     <Head>
-      <title>Страница блюд из заведений!</title>
+      <title>Страница продуктов!</title>
     </Head>
   );
 }

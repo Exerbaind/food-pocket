@@ -20,7 +20,7 @@ export const data = [
     name: "Чета",
     mobileName: "Чета",
     icon: <AiOutlineShopping color="rgba(38, 135, 92, 0.8)" />,
-    link: "/products",
+    link: "/chet",
   },
   {
     name: null,

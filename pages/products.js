@@ -1,12 +1,12 @@
 import { Fragment } from "react";
-import Seo from "../seo/mainSeo";
+import Seo from "../seo/productsSeo";
 import clientPromise from "../server/mongodb";
 
-export default function Home() {
+export default function Products() {
   return (
     <Fragment>
       <Seo />
-      <p>hello</p>
+      <p>hi</p>
     </Fragment>
   );
 }
