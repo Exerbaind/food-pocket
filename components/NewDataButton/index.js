@@ -1,35 +1,33 @@
 import React from "react";
 import { S } from "./styles";
-import PropTypes from "prop-types";
-
-import { checkDevice } from "../../common/utils/checkDevice";
 
 import { FiPlus } from "react-icons/fi";
+import { CgClose } from "react-icons/cg";
+import { connect } from "react-redux";
 
-const types = {
-  dish: "Добавить блюдо",
-  product: "Добавить продукт",
-};
+import { handleModalForm } from "../../services/modalForm/modalFromSlice";
 
-function NewDataButton({ type }) {
-  //   const { isMobile } = checkDevice();
-
-  const handleAction = () => {
-    console.log("tapped");
-  };
-
+function NewDataButton({ isMobile, showForm, handleModalFormAction }) {
+  const buttonText = showForm ? "Закрыть" : "Добавить";
   return (
-    <S.Button onClick={handleAction} isMobile={false}>
-      <S.ButtonIcon>
-        <FiPlus color="white" />
-      </S.ButtonIcon>
-      <S.ButtonText>{types[type]}</S.ButtonText>
+    <S.Button
+      onClick={handleModalFormAction}
+      isMobile={isMobile}
+      showForm={showForm}
+    >
+      <FiPlus color="white" />
+      <S.ButtonText>{buttonText}</S.ButtonText>
     </S.Button>
   );
 }
 
-NewDataButton.propTypes = {
-  type: PropTypes.string.isRequired,
+const mapStateToProps = ({ appService, modalFormService }) => ({
+  isMobile: appService.isMobile,
+  showForm: modalFormService.showForm,
+});
+
+const mapDispatchToProps = {
+  handleModalFormAction: handleModalForm,
 };
 
-export default NewDataButton;
+export default connect(mapStateToProps, mapDispatchToProps)(NewDataButton);

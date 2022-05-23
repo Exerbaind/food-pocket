@@ -8,14 +8,17 @@ S.Button = styled.button`
   bottom: 10px;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px 20px;
+  padding: 10px 25px 10px 20px;
   border-radius: 20px;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${MAIN_COLORS.green};
+  background-color: ${({ showForm }) =>
+    showForm ? MAIN_COLORS.red : MAIN_COLORS.green};
   z-index: 5;
+  opacity: 1;
+  visibility: visible;
   cursor: pointer;
   transition: 0.3s;
 
@@ -24,27 +27,24 @@ S.Button = styled.button`
     css`
       padding: 10px 0;
       width: 95%;
-      bottom: 50px;
+      bottom: ${({ showForm }) => (showForm ? "0px" : "50px")};
     `}
 
   &:hover {
-    background-color: rgba(38, 135, 92, 0.7);
+    background-color: ${({ showForm }) =>
+      showForm ? "rgba(144, 0, 32, 0.7)" : "rgba(38, 135, 92, 0.7)"};
   }
 
   &:active {
-    background-color: rgba(38, 135, 92, 1);
+    background-color: ${({ showForm }) =>
+      showForm ? "rgba(144, 0, 32, 1)" : "rgba(38, 135, 92, 1)"};
   }
-`;
 
-S.ButtonIcon = styled.div`
-  height: 100%;
-  width: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   svg {
+    width: 25px;
     height: 100%;
-    width: 100%;
+    transform: ${({ showForm }) => (showForm ? "rotate(45deg)" : "rotate(0)")};
+    transition: 0.3s;
   }
 `;
 

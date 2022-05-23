@@ -2,8 +2,11 @@ import clientPromise from "../../server/mongodb";
 
 export default async function handler(req, res) {
   const client = await clientPromise;
-  const db = client.db("FoodPocket");
-  const data = await db.collection("Products").find({}).toArray();
+  const db = client.db("RestaurantsDatabase");
+  const data = await db.collection("DishesList").find({}).toArray();
 
-  res.send({ data });
+  return res.json({
+    message: JSON.parse(JSON.stringify(data)),
+    success: true,
+  });
 }

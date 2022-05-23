@@ -1,6 +1,11 @@
-import { checkDevice } from "../../common/utils/checkDevice";
+import { connect } from "react-redux";
 import { S } from "./styles";
-export default function CommonPageLayout({ children }) {
-  // const { isMobile } = checkDevice();
-  return <S.Container isMobile={false}>{children}</S.Container>;
+function CommonPageLayout({ children, isMobile }) {
+  return <S.Container isMobile={isMobile}>{children}</S.Container>;
 }
+
+const mapStateToProps = ({ appService }) => ({
+  isMobile: appService.isMobile,
+});
+
+export default connect(mapStateToProps)(CommonPageLayout);

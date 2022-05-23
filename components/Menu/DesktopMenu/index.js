@@ -41,9 +41,9 @@ const renderMenuItems = (item, index, menuActive) => {
   );
 };
 
-function DesktopMenu({ menuActive, handleMenuAction }) {
+function DesktopMenu({ menuActive, handleMenuAction, showForm }) {
   return (
-    <S.Menu active={menuActive}>
+    <S.Menu active={menuActive} showForm={showForm}>
       <S.MenuHandler onClick={handleMenuAction}>
         {renderMenuIcon(menuActive)}
       </S.MenuHandler>
@@ -55,8 +55,9 @@ function DesktopMenu({ menuActive, handleMenuAction }) {
   );
 }
 
-const mapStateToProps = ({ menuService }) => ({
+const mapStateToProps = ({ menuService, modalFormService }) => ({
   menuActive: menuService.active,
+  showForm: modalFormService.showForm,
 });
 
 const mapDispatchToProps = {

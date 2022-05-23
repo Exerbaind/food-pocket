@@ -3,12 +3,14 @@ import Seo from "../seo/productsSeo";
 import clientPromise from "../server/mongodb";
 
 import NewDataButton from "../components/NewDataButton";
+import ModalForm from "../components/ModalForm";
 
 export default function Products() {
   return (
     <Fragment>
       <Seo />
-      <NewDataButton type="product" />
+      <NewDataButton />
+      <ModalForm />
     </Fragment>
   );
 }

@@ -1,37 +1,52 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
 import Seo from "../seo/mainSeo";
-import clientPromise from "../server/mongodb";
 
+import { initScreenType } from "../common/utils/initScreenType";
+
+import { wrapper } from "../services/store";
+import { handleScreenType } from "../services/app/appSlice";
+
+import ModalForm from "../components/ModalForm";
 import NewDataButton from "../components/NewDataButton";
 
-export default function Home() {
+function Home({ isMobile, handleScreenTypeAction }) {
+  useEffect(() => {
+    handleScreenTypeAction(isMobile);
+  }, []);
   return (
     <Fragment>
       <Seo />
-      <NewDataButton type="dish" />
+      <NewDataButton />
+      <ModalForm />
     </Fragment>
   );
 }
 
-export async function getServerSideProps(context) {
-  try {
-    await clientPromise;
-    // `await clientPromise` will use the default database passed in the MONGODB_URI
-    // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the folloing code:
-    //
-    // `const client = await clientPromise`
-    // `const db = client.db("myDatabase")`
-    //
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (context) => {
+    const { isMobile } = initScreenType(context);
+    store.dispatch(handleScreenType(isMobile));
+    try {
+      const data = await fetch("http://localhost:3000/api/data");
+      let res = await data.json();
+      console.log(res["message"]);
+      // console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
 
-    return {
-      props: { isConnected: true },
-    };
-  } catch (e) {
-    console.error(e);
-    return {
-      props: { isConnected: false },
-    };
+    // const client = await clientPromise;
+    // const db = client.db("RestaurantsDatabase");
+    // const data = await db.collection("DishesList").find({}).toArray();
+    // console.log(data);
+
+    return { props: { isMobile } };
   }
-}
+);
+
+const mapDispatchToProps = {
+  handleScreenTypeAction: handleScreenType,
+};
+
+export default connect(null, mapDispatchToProps)(Home);

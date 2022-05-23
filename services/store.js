@@ -1,10 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import menuSlice from "./menu/menuSlice";
 import { createWrapper } from "next-redux-wrapper";
+
+import appSlice from "./app/appSlice";
+import menuSlice from "./menu/menuSlice";
+import modalFormSlice from "./modalForm/modalFromSlice";
 
 export const store = configureStore({
   reducer: {
+    appService: appSlice,
     menuService: menuSlice,
+    modalFormService: modalFormSlice,
   },
 });
 

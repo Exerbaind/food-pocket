@@ -1,18 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 
-import { useMobileDetect } from "../../common/utils/checkDevice";
-
-function Menu() {
-  // const device = useMobileDetect;
-  // console.log(device);
-
-  // if (isMobile) {
-  // return <MobileMenu />;
-  // }
+function Menu({ isMobile }) {
+  if (isMobile) {
+    return <MobileMenu />;
+  }
 
   return <DesktopMenu />;
 }
 
-export default Menu;
+const mapStateToProps = ({ appService }) => ({
+  isMobile: appService.isMobile,
+});
+
+export default connect(mapStateToProps)(Menu);
