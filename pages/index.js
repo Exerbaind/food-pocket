@@ -2,11 +2,13 @@ import { Fragment } from "react";
 import Seo from "../seo/mainSeo";
 import clientPromise from "../server/mongodb";
 
+import NewDataButton from "../components/NewDataButton";
+
 export default function Home() {
   return (
     <Fragment>
       <Seo />
-      <p>hello</p>
+      <NewDataButton type="dish" />
     </Fragment>
   );
 }
