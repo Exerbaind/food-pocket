@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 
-import { store } from "../services/store";
+import { store, wrapper } from "../services/store";
 
 import { GlobalStyles } from "../common/styles/global";
 import Header from "../components/Header";
@@ -20,4 +20,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

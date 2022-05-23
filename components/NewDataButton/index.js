@@ -12,14 +12,14 @@ const types = {
 };
 
 function NewDataButton({ type }) {
-  const { isMobile } = checkDevice();
+  //   const { isMobile } = checkDevice();
 
   const handleAction = () => {
     console.log("tapped");
   };
 
   return (
-    <S.Button onClick={handleAction} isMobile={isMobile}>
+    <S.Button onClick={handleAction} isMobile={false}>
       <S.ButtonIcon>
         <FiPlus color="white" />
       </S.ButtonIcon>

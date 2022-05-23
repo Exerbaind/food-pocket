@@ -2,14 +2,15 @@ import React from "react";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 
-import { checkDevice } from "../../common/utils/checkDevice";
+import { useMobileDetect } from "../../common/utils/checkDevice";
 
 function Menu() {
-  const { isMobile } = checkDevice();
+  // const device = useMobileDetect;
+  // console.log(device);
 
-  if (isMobile) {
-    return <MobileMenu />;
-  }
+  // if (isMobile) {
+  // return <MobileMenu />;
+  // }
 
   return <DesktopMenu />;
 }

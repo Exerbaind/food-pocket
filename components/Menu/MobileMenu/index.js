@@ -1,31 +1,31 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 import { S } from "./styles";
 
 import { data } from "../data";
-import { handleMenuAction } from "../../../services/menu/menuSlice";
+import { handleMenu } from "../../../services/menu/menuSlice";
 
-const renderMenuHandler = (item, index, handleMenu, active) => {
+const renderMenuHandler = (item, index, handleMenuAction, menuActive) => {
   const { defaultIcon, activeIcon } = item;
 
   return (
-    <S.MenuHandler key={index} onClick={handleMenu}>
-      {active ? activeIcon : defaultIcon}
+    <S.MenuHandler key={index} onClick={handleMenuAction}>
+      {menuActive ? activeIcon : defaultIcon}
     </S.MenuHandler>
   );
 };
 
-const renderMenuItems = (item, index, handleMenu, active) => {
+const renderMenuItems = (item, index, handleMenuAction, menuActive) => {
   const router = useRouter();
   const { mobileName, icon, link } = item;
 
   const activeLink = router.pathname === link;
 
   if (!link) {
-    return renderMenuHandler(item, index, handleMenu, active);
+    return renderMenuHandler(item, index, handleMenuAction, menuActive);
   }
 
   return (
@@ -40,23 +40,25 @@ const renderMenuItems = (item, index, handleMenu, active) => {
   );
 };
 
-function MobileMenu() {
-  const { active } = useSelector((store) => store.menuService);
-  const dispatch = useDispatch();
-
-  const handleMenu = () => {
-    dispatch(handleMenuAction());
-  };
+function MobileMenu({ menuActive, handleMenuAction }) {
   return (
-    <S.Menu active={active}>
+    <S.Menu active={menuActive}>
       <S.MenuContainer>
         {data &&
           data.map((item, index) =>
-            renderMenuItems(item, index, handleMenu, active)
+            renderMenuItems(item, index, handleMenuAction, menuActive)
           )}
       </S.MenuContainer>
     </S.Menu>
   );
 }
 
-export default MobileMenu;
+const mapStateToProps = ({ menuService }) => ({
+  menuActive: menuService.active,
+});
+
+const mapDispatchToProps = {
+  handleMenuAction: handleMenu,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MobileMenu);

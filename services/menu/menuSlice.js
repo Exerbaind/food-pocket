@@ -8,12 +8,12 @@ const menuSlice = createSlice({
   name: "menu",
   initialState,
   reducers: {
-    handleMenuAction: (state) => {
+    handleMenu: (state) => {
       state.active = !state.active;
     },
   },
 });
 
-export const { handleMenuAction } = menuSlice.actions;
+export const { handleMenu } = menuSlice.actions;
 
 export default menuSlice.reducer;
