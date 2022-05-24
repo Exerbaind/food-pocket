@@ -12,24 +12,22 @@ const activeTabPositions = {
 S.TabBarContainer = styled.div`
   margin-top: 20px;
   width: 100%;
-  overflow-x: auto;
   display: flex;
   justify-content: flex-start;
   position: relative;
-  overflow: auto;
   height: 40px;
+  background-color: rgba(38, 135, 92, 0.3);
+  border-radius: 5px;
+  overflow-x: auto;
 `;
 
 S.TabBar = styled.div`
   width: 100%;
   min-width: 500px;
   height: 100%;
-  background-color: rgba(38, 135, 92, 0.3);
   position: absolute;
-  border-radius: 5px;
   display: flex;
   padding: 3px;
-  overflow: auto;
 `;
 
 S.Tab = styled.div`

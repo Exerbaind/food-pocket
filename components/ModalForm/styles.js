@@ -12,7 +12,7 @@ S.ModalContainer = styled.div`
   background-color: ${MAIN_COLORS.white};
   display: flex;
   justify-content: center;
-  padding: 50px 0;
+  padding: ${({ isMobile }) => (isMobile ? "20px 0 50px 0" : "50px 0")};
   opacity: 0;
   visibility: hidden;
   z-index: -1;
