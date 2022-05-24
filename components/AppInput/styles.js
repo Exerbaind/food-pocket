@@ -32,3 +32,25 @@ S.InputField = styled.input`
     background-color: rgba(242, 244, 247, 1);
   }
 `;
+
+S.InputButton = styled.input`
+  width: 100%;
+  margin-top: 40px;
+  padding: 15px 0;
+  font-size: 18px;
+  color: ${MAIN_COLORS.white};
+  background-color: ${MAIN_COLORS.green};
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: rgba(38, 135, 92, 0.7);
+  }
+
+  &:active {
+    background-color: rgba(38, 135, 92, 1);
+  }
+`;

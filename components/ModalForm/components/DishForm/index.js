@@ -3,7 +3,18 @@ import AppInput from "../../../AppInput";
 import { S } from "../styles";
 
 const handleChange = (value, name, setFormData, formData) => {
-  setFormData({ ...formData, [name]: value });
+  if (
+    name === "calories" ||
+    name === "proteins" ||
+    name === "fats" ||
+    name === "carbohydrates"
+  ) {
+    return setFormData({
+      ...formData,
+      nutritions: { ...formData.nutritions, [name]: value },
+    });
+  }
+  return setFormData({ ...formData, [name]: value });
 };
 
 function DishForm() {
@@ -20,7 +31,7 @@ function DishForm() {
     //weight: null, // Если выбран вариант на 100 грмм порция, то покказывать это поле
   });
 
-  //
+  console.log(formData);
 
   return (
     <S.Form>
@@ -35,7 +46,7 @@ function DishForm() {
       />
       <AppInput
         type="text"
-        name="place"
+        name="dishName"
         label="Название блюда"
         onChange={(value, name) =>
           handleChange(value, name, setFormData, formData)
@@ -78,15 +89,7 @@ function DishForm() {
         }
         required
       />
-      <AppInput
-        type="number"
-        name="carbohydrates"
-        label="Количество углеводов"
-        onChange={(value, name) =>
-          handleChange(value, name, setFormData, formData)
-        }
-        required
-      />
+      <AppInput type="submit" buttonText="Отправить" />
     </S.Form>
   );
 }

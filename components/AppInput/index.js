@@ -6,7 +6,18 @@ const handleChange = (e, onChange) => {
   onChange(e.target.value, e.target.name);
 };
 
-function AppInput({ type, name, label, placeholder, required, onChange }) {
+function AppInput({
+  type,
+  name,
+  label,
+  placeholder,
+  required,
+  onChange,
+  buttonText,
+}) {
+  if (type === "submit") {
+    return <S.InputButton type={type} value={buttonText} />;
+  }
   return (
     <S.Input>
       {label && (
@@ -18,6 +29,7 @@ function AppInput({ type, name, label, placeholder, required, onChange }) {
       <S.InputField
         type={type}
         name={name}
+        id={name}
         placeholder={placeholder}
         required={required}
         onChange={(e) => handleChange(e, onChange)}
@@ -33,12 +45,14 @@ AppInput.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
+  buttonText: PropTypes.string,
 };
 
 AppInput.defaultProps = {
   label: null,
   placeholder: null,
   required: false,
+  buttonText: "",
 };
 
 export default AppInput;
