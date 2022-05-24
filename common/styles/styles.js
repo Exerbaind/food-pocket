@@ -2,6 +2,7 @@ export const MAIN_COLORS = {
   green: "rgba(38, 135, 92, 0.8)",
   white: "#FFFFFF",
   red: "rgba(144, 0, 32, 0.8)",
+  grey: "rgb(242, 244, 247, 0.8)",
 };
 
 export const TEXT_COLORS = {

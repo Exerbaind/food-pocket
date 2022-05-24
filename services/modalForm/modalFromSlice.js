@@ -12,9 +12,12 @@ const modalFormSlice = createSlice({
     handleModalForm: (state) => {
       state.showForm = !state.showForm;
     },
+    handleCurrentForm: (state, action) => {
+      state.currentForm = action.payload;
+    },
   },
 });
 
-export const { handleModalForm } = modalFormSlice.actions;
+export const { handleModalForm, handleCurrentForm } = modalFormSlice.actions;
 
 export default modalFormSlice.reducer;

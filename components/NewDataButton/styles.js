@@ -16,7 +16,7 @@ S.Button = styled.button`
   align-items: center;
   background-color: ${({ showForm }) =>
     showForm ? MAIN_COLORS.red : MAIN_COLORS.green};
-  z-index: 5;
+  z-index: 10;
   opacity: 1;
   visibility: visible;
   cursor: pointer;
@@ -27,7 +27,7 @@ S.Button = styled.button`
     css`
       padding: 10px 0;
       width: 95%;
-      bottom: ${({ showForm }) => (showForm ? "0px" : "50px")};
+      bottom: ${({ showForm }) => (showForm ? "-10px" : "50px")};
     `}
 
   &:hover {
