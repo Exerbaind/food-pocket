@@ -27,14 +27,14 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
     const { isMobile } = initScreenType(context);
     store.dispatch(handleScreenType(isMobile));
-    try {
-      const data = await fetch("http://localhost:3000/api/data");
-      let res = await data.json();
-      console.log(res["message"]);
-      // console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   const data = await fetch("http://localhost:3000/api/data");
+    //   let res = await data.json();
+    //   console.log(res["message"]);
+    //   // console.log(data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
 
     // const client = await clientPromise;
     // const db = client.db("RestaurantsDatabase");

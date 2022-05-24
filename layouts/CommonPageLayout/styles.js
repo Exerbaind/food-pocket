@@ -1,7 +1,12 @@
 import styled from "styled-components";
+import { BREAKPOINTS } from "../../common/styles/styles";
 
 export const S = {};
 
 S.Container = styled.div`
-  padding: ${({ isMobile }) => (isMobile ? "70px 16px" : "100px")};
+  padding: 100px;
+
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    padding: 70px 16px;
+  }
 `;

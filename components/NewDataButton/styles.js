@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { MAIN_COLORS } from "../../common/styles/styles";
+import styled from "styled-components";
+import { BREAKPOINTS, MAIN_COLORS } from "../../common/styles/styles";
 
 export const S = {};
 
@@ -22,13 +22,11 @@ S.Button = styled.button`
   cursor: pointer;
   transition: 0.3s;
 
-  ${({ isMobile }) =>
-    isMobile &&
-    css`
-      padding: 10px 0;
-      width: 95%;
-      bottom: ${({ showForm }) => (showForm ? "-10px" : "50px")};
-    `}
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    padding: 10px 0;
+    width: 95%;
+    bottom: ${({ showForm }) => (showForm ? "-10px" : "50px")};
+  }
 
   &:hover {
     background-color: ${({ showForm }) =>

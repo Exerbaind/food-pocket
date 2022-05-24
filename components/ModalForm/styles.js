@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { MAIN_COLORS } from "../../common//styles/styles";
+import { MAIN_COLORS, BREAKPOINTS } from "../../common//styles/styles";
 
 export const S = {};
 
@@ -12,7 +12,7 @@ S.ModalContainer = styled.div`
   background-color: ${MAIN_COLORS.white};
   display: flex;
   justify-content: center;
-  padding: ${({ isMobile }) => (isMobile ? "20px 0 50px 0" : "50px 0")};
+  padding: 50px 0;
   opacity: 0;
   visibility: hidden;
   z-index: -1;
@@ -25,10 +25,18 @@ S.ModalContainer = styled.div`
       visibility: visible;
       z-index: 5;
     `}
+
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    padding: 20px 0 50px 0;
+  }
 `;
 
 S.ModalContent = styled.div`
   width: 700px;
+
+  @media (max-width: ${BREAKPOINTS.mobile}) {
+    padding: 0 16px;
+  }
 `;
 
 S.ModalTitle = styled.p`

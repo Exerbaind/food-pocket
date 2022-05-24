@@ -11,6 +11,10 @@ export const store = configureStore({
     menuService: menuSlice,
     modalFormService: modalFormSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 const makeStore = () => store;
