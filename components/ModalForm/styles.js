@@ -7,12 +7,11 @@ S.ModalContainer = styled.div`
   position: fixed;
   top: 50px;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background-color: ${MAIN_COLORS.white};
   display: flex;
   justify-content: center;
-  padding: 50px 0;
   opacity: 0;
   visibility: hidden;
   z-index: -1;
@@ -24,6 +23,7 @@ S.ModalContainer = styled.div`
       opacity: 1;
       visibility: visible;
       z-index: 5;
+      overflow-y: auto;
     `}
 
   @media (max-width: ${BREAKPOINTS.mobile}) {
@@ -32,10 +32,14 @@ S.ModalContainer = styled.div`
 `;
 
 S.ModalContent = styled.div`
+  min-height: 100vh;
   width: 700px;
+  margin-top: 50px;
+  margin-bottom: 200px;
 
   @media (max-width: ${BREAKPOINTS.mobile}) {
     padding: 0 16px;
+    margin-top: 20px;
   }
 `;
 
