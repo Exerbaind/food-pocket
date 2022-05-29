@@ -2,6 +2,19 @@ import React, { useState } from "react";
 import AppInput from "../../../AppInput";
 import { S } from "../styles";
 
+const handleSubmit = async (e, formData) => {
+  e.preventDefault();
+  try {
+    const response = await fetch("api/dish", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
+    const data = await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const handleChange = (value, name, setFormData, formData) => {
   if (
     name === "calories" ||
@@ -31,10 +44,8 @@ function DishForm() {
     //weight: null, // Если выбран вариант на 100 грмм порция, то покказывать это поле
   });
 
-  console.log(formData);
-
   return (
-    <S.Form>
+    <S.Form onSubmit={(e) => handleSubmit(e, formData)}>
       <AppInput // TODO: сделать селект из заведений, с возможностью вводить и выбирать уже из имеющихся
         type="text"
         name="place"

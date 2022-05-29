@@ -44,7 +44,7 @@ AppInput.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   buttonText: PropTypes.string,
 };
 
@@ -53,6 +53,7 @@ AppInput.defaultProps = {
   placeholder: null,
   required: false,
   buttonText: "",
+  onChange: () => {},
 };
 
 export default AppInput;

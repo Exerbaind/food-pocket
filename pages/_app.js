@@ -20,14 +20,14 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <Provider store={store}>
+    <>
       <GlobalStyles />
       <Header />
       <Menu />
       <CommonPageLayout>
         <Component {...pageProps} />
       </CommonPageLayout>
-    </Provider>
+    </>
   );
 }
 
