@@ -4,11 +4,13 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import appSlice from "./app/appSlice";
 import menuSlice from "./menu/menuSlice";
 import modalFormSlice from "./modalForm/modalFromSlice";
+import dishSlice from "./dish/dishSlice";
 
 const combinedReducer = combineReducers({
   appService: appSlice,
   menuService: menuSlice,
   modalFormService: modalFormSlice,
+  dishService: dishSlice,
 });
 
 const reducer = (state, action) => {

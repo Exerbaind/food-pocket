@@ -9,6 +9,9 @@ import { handleScreenType } from "../services/app/appSlice";
 
 import ModalForm from "../components/ModalForm";
 import NewDataButton from "../components/NewDataButton";
+import fetchRequest from "../common/utils/fetchRequest";
+import { handleError, setData } from "../services/dish/dishSlice";
+import BarcodeReader from "../components/BarcodeReader";
 
 function Home() {
   return (
@@ -16,6 +19,7 @@ function Home() {
       <Seo />
       <NewDataButton />
       <ModalForm />
+      <BarcodeReader />
     </Fragment>
   );
 }
@@ -24,20 +28,14 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
     const { isMobile } = initScreenType(context);
     store.dispatch(handleScreenType(isMobile));
-    try {
-      const dev = process.env.NODE_ENV !== "production";
-      const { DEV_URL, PROD_URL } = process.env;
-      const rootUrl = dev ? DEV_URL : PROD_URL;
-      const data = await fetch(`${rootUrl}/api/dishes`, {
-        method: "GET",
-      });
-      let response = await data.json();
-      console.log(response["message"]);
-    } catch (error) {
-      console.error(error);
+    const response = await fetchRequest("/api/dishes");
+    if (response && response.error) {
+      store.dispatch(handleError(response.error));
     }
 
-    return { props: { isMobile } };
+    if (response && response.message) {
+      store.dispatch(setData(response.message));
+    }
   }
 );
 
