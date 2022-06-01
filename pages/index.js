@@ -12,13 +12,15 @@ import NewDataButton from "../components/NewDataButton";
 import fetchRequest from "../common/utils/fetchRequest";
 import { handleError, setData } from "../services/dish/dishSlice";
 import BarcodeReader from "../components/BarcodeReaderModal";
+import ResultsList from "../components/ResultsList";
 
-function Home() {
+function Home({ list }) {
   return (
     <Fragment>
       <Seo />
       <NewDataButton />
       <ModalForm />
+      <ResultsList results={list} type="dish" />
       {/* <BarcodeReader /> */}
     </Fragment>
   );
@@ -28,7 +30,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
     const { isMobile } = initScreenType(context);
     store.dispatch(handleScreenType(isMobile));
-    const response = await fetchRequest("/api/dishes");
+    const response = await fetchRequest("/api/dishes", "GET");
     if (response && response.error) {
       store.dispatch(handleError(response.error));
     }
@@ -39,8 +41,9 @@ export const getServerSideProps = wrapper.getServerSideProps(
   }
 );
 
-const mapStateToProps = ({ appService }) => ({
+const mapStateToProps = ({ appService, dishService }) => ({
   isMobile: appService.isMobile,
+  list: dishService.list,
 });
 
 const mapDispatchToProps = {

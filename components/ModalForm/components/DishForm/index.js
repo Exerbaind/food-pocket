@@ -11,7 +11,7 @@ const handleSubmit = async (e, formData) => {
   e.preventDefault();
   try {
     const response = await fetchRequest("/api/dish", "POST", formData);
-    const data = await response.json();
+    console.log(response);
     // TODO: создать сервис, задиспатчить успешную отправку данных data['message']/data['success']
   } catch (error) {
     console.error(error);

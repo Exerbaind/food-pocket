@@ -1,12 +1,13 @@
-export default async function fetchRequest(url, method = "GET", body = {}) {
+export default async function fetchRequest(url, method, body = {}) {
   const dev = process.env.NODE_ENV !== "production";
-  const { DEV_URL, PROD_URL } = process.env;
-  const rootUrl = dev ? DEV_URL : PROD_URL;
+  const rootUrl = dev
+    ? "http://localhost:3000"
+    : "https://food-pocket.vercel.app";
   let data;
   let response;
   if (method === "GET") {
     try {
-      data = await fetchGET(rootUrl, url, method);
+      data = await fetchGET(rootUrl, url);
       response = await data.json();
     } catch (error) {
       console.error(error);
@@ -15,25 +16,49 @@ export default async function fetchRequest(url, method = "GET", body = {}) {
   }
 
   if (method === "POST") {
-    data = await fetchPOST(rootUrl, url, method, body);
-    response = await data.json();
+    try {
+      data = await fetchPOST(rootUrl, url, body);
+      response = await data.json();
+    } catch (error) {
+      console.error(error);
+      return { error: "Что-то пошло не так" };
+    }
+  }
+
+  if (method === "DELETE") {
+    try {
+      data = await fetchDELETE(rootUrl, url, body);
+      response = await data.json();
+    } catch (error) {
+      console.error(error);
+      return { error: "Что-то пошло не так" };
+    }
   }
 
   return response;
 }
 
-const fetchGET = async (rootUrl, url, method) => {
+const fetchGET = async (rootUrl, url) => {
   const response = await fetch(`${rootUrl}${url}`, {
-    method,
+    method: "GET",
   });
 
   return response;
 };
 
-const fetchPOST = async (rootUrl, url, method, body) => {
+const fetchPOST = async (rootUrl, url, body) => {
   const response = await fetch(`${rootUrl}${url}`, {
-    method,
+    method: "POST",
     body: JSON.stringify(body),
+  });
+
+  return response;
+};
+
+const fetchDELETE = async (rootUrl, url, body) => {
+  const response = await fetch(`${rootUrl}${url}`, {
+    method: "DELETE",
+    body: body,
   });
 
   return response;

@@ -53,7 +53,7 @@ S.InputError = styled.span`
   color: ${MAIN_COLORS.red};
 `;
 
-S.InputButton = styled.button`
+S.InputButton = styled.input`
   margin-top: 25px;
   height: 50px;
   width: 100%;

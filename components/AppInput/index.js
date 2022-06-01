@@ -41,9 +41,11 @@ function AppInput({
 
   if (type === "submit") {
     return (
-      <S.InputButton type={type} disabled={buttonValidator(buttonState)}>
-        {buttonText}
-      </S.InputButton>
+      <S.InputButton
+        value={buttonText}
+        type={type}
+        disabled={buttonValidator(buttonState)}
+      />
     );
   }
 
@@ -67,6 +69,7 @@ function AppInput({
         }
         error={error}
         success={success}
+        step="0.01"
       />
       {!!error && <S.InputError>{error}</S.InputError>}
     </S.Input>
