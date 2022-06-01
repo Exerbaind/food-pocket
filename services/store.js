@@ -5,12 +5,14 @@ import appSlice from "./app/appSlice";
 import menuSlice from "./menu/menuSlice";
 import modalFormSlice from "./modalForm/modalFromSlice";
 import dishSlice from "./dish/dishSlice";
+import messageSlice from "./message/messageSlice";
 
 const combinedReducer = combineReducers({
   appService: appSlice,
   menuService: menuSlice,
   modalFormService: modalFormSlice,
   dishService: dishSlice,
+  messageService: messageSlice,
 });
 
 const reducer = (state, action) => {

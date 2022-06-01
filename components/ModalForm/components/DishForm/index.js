@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import fetchRequest from "../../../../common/utils/fetchRequest";
+import { handleShowMessage } from "../../../../services/message/messageSlice";
+import { handleModalForm } from "../../../../services/modalForm/modalFromSlice";
 import AppInput from "../../../AppInput";
 import { S } from "../styles";
 
@@ -7,11 +10,19 @@ const propsList = {
   nutritions: "calories,proteins,fats,carbohydrates",
 };
 
-const handleSubmit = async (e, formData) => {
+const handleSubmit = async (
+  e,
+  formData,
+  handleModalFormAction,
+  handleShowMessageAction
+) => {
   e.preventDefault();
   try {
     const response = await fetchRequest("/api/dish", "POST", formData);
-    console.log(response);
+    if (response && response.message) {
+      handleModalFormAction();
+      handleShowMessageAction(response.message);
+    }
     // TODO: создать сервис, задиспатчить успешную отправку данных data['message']/data['success']
   } catch (error) {
     console.error(error);
@@ -41,7 +52,7 @@ const handleBlur = (
   });
 };
 
-function DishForm() {
+function DishForm({ handleModalFormAction, handleShowMessageAction }) {
   const [formData, setFormData] = useState({
     place: "",
     dishName: "",
@@ -82,7 +93,16 @@ function DishForm() {
   });
 
   return (
-    <S.Form onSubmit={(e) => handleSubmit(e, formData)}>
+    <S.Form
+      onSubmit={(e) =>
+        handleSubmit(
+          e,
+          formData,
+          handleModalFormAction,
+          handleShowMessageAction
+        )
+      }
+    >
       <AppInput // TODO: сделать селект из заведений, с возможностью вводить и выбирать уже из имеющихся
         type="text"
         name="place"
@@ -164,4 +184,9 @@ function DishForm() {
   );
 }
 
-export default DishForm;
+const mapDispatchToProps = {
+  handleShowMessageAction: handleShowMessage,
+  handleModalFormAction: handleModalForm,
+};
+
+export default connect(null, mapDispatchToProps)(DishForm);

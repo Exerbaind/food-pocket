@@ -13,6 +13,7 @@ import fetchRequest from "../common/utils/fetchRequest";
 import { handleError, setData } from "../services/dish/dishSlice";
 import BarcodeReader from "../components/BarcodeReaderModal";
 import ResultsList from "../components/ResultsList";
+import MessagePopup from "../components/MessagePopUp";
 
 function Home({ list }) {
   return (
@@ -21,6 +22,7 @@ function Home({ list }) {
       <NewDataButton />
       <ModalForm />
       <ResultsList results={list} type="dish" />
+      <MessagePopup />
       {/* <BarcodeReader /> */}
     </Fragment>
   );
