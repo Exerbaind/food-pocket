@@ -15,7 +15,7 @@ async function addDish(req, res) {
     const db = client.db("RestaurantsDatabase");
     await db.collection("DishesList").insertOne(JSON.parse(req.body));
     return res.json({
-      message: "Post added successfully",
+      message: "Блюдо успешно отправлено!",
       success: true,
     });
   } catch (error) {

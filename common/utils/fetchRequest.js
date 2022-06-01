@@ -1,4 +1,4 @@
-export default async function fetchRequest(url, method = "GET") {
+export default async function fetchRequest(url, method = "GET", body = {}) {
   const dev = process.env.NODE_ENV !== "production";
   const { DEV_URL, PROD_URL } = process.env;
   const rootUrl = dev ? DEV_URL : PROD_URL;
@@ -14,13 +14,27 @@ export default async function fetchRequest(url, method = "GET") {
     }
   }
 
+  if (method === "POST") {
+    data = await fetchPOST(rootUrl, url, method, body);
+    response = await data.json();
+  }
+
   return response;
 }
 
 const fetchGET = async (rootUrl, url, method) => {
-  const data = await fetch(`${rootUrl}${url}`, {
+  const response = await fetch(`${rootUrl}${url}`, {
     method,
   });
 
-  return data;
+  return response;
+};
+
+const fetchPOST = async (rootUrl, url, method, body) => {
+  const response = await fetch(`${rootUrl}${url}`, {
+    method,
+    body: JSON.stringify(body),
+  });
+
+  return response;
 };

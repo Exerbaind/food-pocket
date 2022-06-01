@@ -8,7 +8,6 @@ const BarcodeScannerComponent = dynamic(
 
 function BarcodeReader() {
   const [data, setData] = useState("Not Found");
-  const [torchOn, setTorchOn] = useState(false);
 
   return (
     <>
@@ -20,10 +19,6 @@ function BarcodeReader() {
           if (result) setData(result.text);
         }}
       />
-      <p>{data}</p>
-      <button onClick={() => setTorchOn(!torchOn)}>
-        Switch Torch {torchOn ? "Off" : "On"}
-      </button>
     </>
   );
 }

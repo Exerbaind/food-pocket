@@ -10,7 +10,7 @@ const activeTabPositions = {
 };
 
 S.TabBarContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
   width: 100%;
   display: flex;
   justify-content: flex-start;

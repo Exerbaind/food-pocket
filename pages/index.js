@@ -11,7 +11,7 @@ import ModalForm from "../components/ModalForm";
 import NewDataButton from "../components/NewDataButton";
 import fetchRequest from "../common/utils/fetchRequest";
 import { handleError, setData } from "../services/dish/dishSlice";
-import BarcodeReader from "../components/BarcodeReader";
+import BarcodeReader from "../components/BarcodeReaderModal";
 
 function Home() {
   return (
@@ -19,7 +19,7 @@ function Home() {
       <Seo />
       <NewDataButton />
       <ModalForm />
-      <BarcodeReader />
+      {/* <BarcodeReader /> */}
     </Fragment>
   );
 }
