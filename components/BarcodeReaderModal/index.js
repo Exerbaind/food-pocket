@@ -14,7 +14,6 @@ function BarcodeReader() {
       <BarcodeScannerComponent
         width={500}
         height={500}
-        torch={torchOn}
         onUpdate={(err, result) => {
           if (result) setData(result.text);
         }}

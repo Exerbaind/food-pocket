@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import fetchRequest from "../../../../common/utils/fetchRequest";
+import AppInput from "../../../AppInput";
+
+import { S } from "../styles";
+
 import { handleShowMessage } from "../../../../services/message/messageSlice";
 import { handleModalForm } from "../../../../services/modalForm/modalFromSlice";
-import AppInput from "../../../AppInput";
-import { S } from "../styles";
 
 const propsList = {
   nutritions: "calories,proteins,fats,carbohydrates",

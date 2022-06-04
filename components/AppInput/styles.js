@@ -17,12 +17,21 @@ S.InputLabel = styled.label`
   color: ${TEXT_COLORS.blackText};
 `;
 
+S.InputBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: nowrap;
+  height: 40px;
+`;
+
 S.InputField = styled.input`
-  padding: 10px;
+  height: 100%;
   font-size: 18px;
+  padding-left: 10px;
   color: ${TEXT_COLORS.blackText};
   background-color: ${MAIN_COLORS.grey};
-  width: 100%;
+  flex: 1;
   border-radius: 5px;
   border: 1px solid transparent;
   margin-top: 5px;
@@ -46,11 +55,26 @@ S.InputField = styled.input`
   }
 `;
 
+S.InputIcon = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  cursor: pointer;
+
+  svg {
+    height: 100%;
+    width: 60%;
+  }
+`;
+
 S.InputError = styled.span`
   position: absolute;
   display: block;
   font-size: 14px;
   color: ${MAIN_COLORS.red};
+  margin-top: 7px;
 `;
 
 S.InputButton = styled.input`

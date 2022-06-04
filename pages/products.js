@@ -1,39 +1,53 @@
 import { Fragment } from "react";
+import { connect } from "react-redux";
 import Seo from "../seo/productsSeo";
-import clientPromise from "../server/mongodb";
 
-import NewDataButton from "../components/NewDataButton";
+import { initScreenType } from "../common/utils/initScreenType";
+
+import { wrapper } from "../services/store";
+import { handleScreenType } from "../services/app/appSlice";
+
 import ModalForm from "../components/ModalForm";
+import NewDataButton from "../components/NewDataButton";
+import fetchRequest from "../common/utils/fetchRequest";
+import { handleError, setData } from "../services/product/productSlice";
+import ResultsList from "../components/ResultsList";
+import MessagePopup from "../components/MessagePopUp";
 
-export default function Products() {
+function Products({ list }) {
   return (
     <Fragment>
       <Seo />
       <NewDataButton />
       <ModalForm />
+      <ResultsList results={list} type="product" />
+      <MessagePopup />
     </Fragment>
   );
 }
 
-export async function getServerSideProps(context) {
-  try {
-    await clientPromise;
-    // `await clientPromise` will use the default database passed in the MONGODB_URI
-    // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the folloing code:
-    //
-    // `const client = await clientPromise`
-    // `const db = client.db("myDatabase")`
-    //
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (context) => {
+    const { isMobile } = initScreenType(context);
+    store.dispatch(handleScreenType(isMobile));
+    const response = await fetchRequest("/api/products", "GET");
+    if (response && response.error) {
+      store.dispatch(handleError(response.error));
+    }
 
-    return {
-      props: { isConnected: true },
-    };
-  } catch (e) {
-    console.error(e);
-    return {
-      props: { isConnected: false },
-    };
+    if (response && response.message) {
+      store.dispatch(setData(response.message));
+    }
   }
-}
+);
+
+const mapStateToProps = ({ appService, productService }) => ({
+  isMobile: appService.isMobile,
+  list: productService.list,
+});
+
+const mapDispatchToProps = {
+  handleScreenTypeAction: handleScreenType,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
