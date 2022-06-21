@@ -1,11 +1,11 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import { S } from "../styles";
-import fetchRequest from "../../../../common/utils/fetchRequest";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { S } from '../styles';
+import fetchRequest from '../../../../common/utils/fetchRequest';
 
 const handleDelete = async (id) => {
   try {
-    const response = await fetchRequest("/api/dish", "DELETE", id);
+    const response = await fetchRequest('/api/dish', 'DELETE', id);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -15,7 +15,9 @@ const handleDelete = async (id) => {
 function DishCard({ item }) {
   const {
     dishName,
-    nutritions: { calories, carbohydrates, fats, proteins },
+    nutritions: {
+      calories, carbohydrates, fats, proteins,
+    },
     place,
     _id,
   } = item;

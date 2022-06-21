@@ -1,12 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import TabBar from "../TabBar";
-import DishForm from "./components/DishForm";
-import ProductForm from "./components/ProductForm";
-import MenuForm from "./components/MenuForm";
+import TabBar from '../TabBar';
+import DishForm from './components/DishForm';
+import ProductForm from './components/ProductForm';
+import MenuForm from './components/MenuForm';
 
-import { S } from "./styles";
+import { S } from './styles';
 
 const formsList = {
   dish: <DishForm />,

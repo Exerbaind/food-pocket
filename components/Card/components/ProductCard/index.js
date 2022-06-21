@@ -1,11 +1,11 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import { S } from "../styles";
-import fetchRequest from "../../../../common/utils/fetchRequest";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { S } from '../styles';
+import fetchRequest from '../../../../common/utils/fetchRequest';
 
 const handleDelete = async (id) => {
   try {
-    const response = await fetchRequest("/api/product", "DELETE", id);
+    const response = await fetchRequest('/api/product', 'DELETE', id);
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -15,7 +15,9 @@ const handleDelete = async (id) => {
 function ProductCard({ item }) {
   const {
     productName,
-    nutritions: { calories, proteins, fats, carbohydrates },
+    nutritions: {
+      calories, proteins, fats, carbohydrates,
+    },
     barcode,
     _id,
   } = item;

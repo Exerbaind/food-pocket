@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { S } from "./styles";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
+import { S } from './styles';
 
-import { AiOutlineCheckCircle } from "react-icons/ai";
-import { handleHideMessage } from "../../services/message/messageSlice";
+import { handleHideMessage } from '../../services/message/messageSlice';
 
 function MessagePopup({ isActive, text, handleHideMessageAction }) {
   useEffect(() => {

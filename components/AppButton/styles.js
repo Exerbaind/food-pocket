@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { TEXT_COLORS, THEME_COLORS } from "../../common/styles/styles";
+import styled from 'styled-components';
+import { TEXT_COLORS, THEME_COLORS } from '../../common/styles/styles';
 
 const sizeList = {
-  s: "35px",
-  m: "45px",
-  l: "55px",
+  s: '35px',
+  m: '45px',
+  l: '55px',
 };
 
 export const S = {};

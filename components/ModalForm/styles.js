@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { MAIN_COLORS, BREAKPOINTS } from "../../common//styles/styles";
+import styled, { css } from 'styled-components';
+import { MAIN_COLORS, BREAKPOINTS } from '../../common/styles/styles';
 
 export const S = {};
 
@@ -17,9 +17,8 @@ S.ModalContainer = styled.div`
   z-index: -1;
   transition: 0.3s;
 
-  ${({ showForm }) =>
-    showForm &&
-    css`
+  ${({ showForm }) => showForm
+    && css`
       opacity: 1;
       visibility: visible;
       z-index: 5;

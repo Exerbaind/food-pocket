@@ -1,7 +1,7 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import Card from "../Card";
-import { S } from "./styles";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import Card from '../Card';
+import { S } from './styles';
 
 function ResultsList({ results, type }) {
   if (results && results.length) {

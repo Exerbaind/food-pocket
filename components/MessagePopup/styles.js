@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import { css } from "styled-components";
-import { MAIN_COLORS, TEXT_COLORS } from "../../common/styles/styles";
+import styled, { css } from 'styled-components';
+import { MAIN_COLORS, TEXT_COLORS } from '../../common/styles/styles';
 
 export const S = {};
 
@@ -19,9 +18,8 @@ S.MessageContainer = styled.div`
   z-index: -1;
   transition: 0.3s;
 
-  ${({ active }) =>
-    active &&
-    css`
+  ${({ active }) => active
+    && css`
       opacity: 1;
       visibility: visible;
       z-index: 20;

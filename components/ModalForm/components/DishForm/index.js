@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import fetchRequest from "../../../../common/utils/fetchRequest";
-import AppInput from "../../../AppInput";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import fetchRequest from '../../../../common/utils/fetchRequest';
+import AppInput from '../../../AppInput';
 
-import { S } from "../styles";
+import { S } from '../styles';
 
-import { handleShowMessage } from "../../../../services/message/messageSlice";
-import { handleModalForm } from "../../../../services/modalForm/modalFromSlice";
+import { handleShowMessage } from '../../../../services/message/messageSlice';
+import { handleModalForm } from '../../../../services/modalForm/modalFromSlice';
 
 const propsList = {
-  nutritions: "calories,proteins,fats,carbohydrates",
+  nutritions: 'calories,proteins,fats,carbohydrates',
 };
 
 const handleSubmit = async (
   e,
   formData,
   handleModalFormAction,
-  handleShowMessageAction
+  handleShowMessageAction,
 ) => {
   e.preventDefault();
   try {
-    const response = await fetchRequest("/api/dish", "POST", formData);
+    const response = await fetchRequest('/api/dish', 'POST', formData);
     if (response && response.message) {
       handleModalFormAction();
       handleShowMessageAction(response.message);
@@ -46,135 +46,107 @@ const handleBlur = (
   name,
   valid,
   fieldsValidation,
-  setFieldsValidation
-) => {
-  return setFieldsValidation({
-    ...fieldsValidation,
-    [name]: { error: error, isValid: valid },
-  });
-};
+  setFieldsValidation,
+) => setFieldsValidation({
+  ...fieldsValidation,
+  [name]: { error, isValid: valid },
+});
 
 function DishForm({ handleModalFormAction, handleShowMessageAction }) {
   const [formData, setFormData] = useState({
-    place: "",
-    dishName: "",
+    place: '',
+    dishName: '',
     nutritions: {
       calories: null,
       proteins: null,
       fats: null,
       carbohydrates: null,
     },
-    //portion: "",
-    //weight: null, // Если выбран вариант на 100 грмм порция, то покказывать это поле
+    // portion: "",
+    // weight: null, // Если выбран вариант на 100 грмм порция, то покказывать это поле
   });
   const [fieldsValidation, setFieldsValidation] = useState({
     place: {
-      error: "",
+      error: '',
       isValid: false,
     },
     dishName: {
-      error: "",
+      error: '',
       isValid: false,
     },
     calories: {
-      error: "",
+      error: '',
       isValid: false,
     },
     proteins: {
-      error: "",
+      error: '',
       isValid: false,
     },
     fats: {
-      error: "",
+      error: '',
       isValid: false,
     },
     carbohydrates: {
-      error: "",
+      error: '',
       isValid: false,
     },
   });
 
   return (
     <S.Form
-      onSubmit={(e) =>
-        handleSubmit(
-          e,
-          formData,
-          handleModalFormAction,
-          handleShowMessageAction
-        )
-      }
+      onSubmit={(e) => handleSubmit(
+        e,
+        formData,
+        handleModalFormAction,
+        handleShowMessageAction,
+      )}
     >
       <AppInput // TODO: сделать селект из заведений, с возможностью вводить и выбирать уже из имеющихся
         type="text"
         name="place"
         label="Название заведения"
-        onChange={(value, name) =>
-          handleChange(value, name, setFormData, formData)
-        }
-        onBlur={(error, name, valid) =>
-          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
-        }
+        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
+        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
         required
       />
       <AppInput
         type="text"
         name="dishName"
         label="Название блюда"
-        onChange={(value, name) =>
-          handleChange(value, name, setFormData, formData)
-        }
-        onBlur={(error, name, valid) =>
-          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
-        }
+        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
+        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
         required
       />
       <AppInput
         type="number"
         name="calories"
         label="Количество калорий"
-        onChange={(value, name) =>
-          handleChange(value, name, setFormData, formData)
-        }
-        onBlur={(error, name, valid) =>
-          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
-        }
+        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
+        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
         required
       />
       <AppInput
         type="number"
         name="proteins"
         label="Количество белков"
-        onChange={(value, name) =>
-          handleChange(value, name, setFormData, formData)
-        }
-        onBlur={(error, name, valid) =>
-          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
-        }
+        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
+        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
         required
       />
       <AppInput
         type="number"
         name="fats"
         label="Количество жиров"
-        onChange={(value, name) =>
-          handleChange(value, name, setFormData, formData)
-        }
-        onBlur={(error, name, valid) =>
-          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
-        }
+        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
+        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
         required
       />
       <AppInput
         type="number"
         name="carbohydrates"
         label="Количество углеводов"
-        onChange={(value, name) =>
-          handleChange(value, name, setFormData, formData)
-        }
-        onBlur={(error, name, valid) =>
-          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
-        }
+        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
+        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
         required
       />
       <AppInput

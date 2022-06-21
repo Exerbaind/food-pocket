@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   active: null,
-  barcode: "",
+  barcode: '',
 };
 
 const barcodeSlice = createSlice({
-  name: "barcode",
+  name: 'barcode',
   initialState,
   reducers: {
     handleBarcode: (state) => {

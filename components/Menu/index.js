@@ -1,7 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import DesktopMenu from "./DesktopMenu";
-import MobileMenu from "./MobileMenu";
+import React from 'react';
+import { connect } from 'react-redux';
+import DesktopMenu from './DesktopMenu';
+import MobileMenu from './MobileMenu';
 
 function Menu({ isMobile }) {
   if (isMobile) {

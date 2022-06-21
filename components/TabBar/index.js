@@ -1,9 +1,9 @@
-import React from "react";
-import { S } from "./styles";
+import React from 'react';
+import { connect } from 'react-redux';
+import { S } from './styles';
 
-import { tabsData } from "./data";
-import { handleCurrentForm } from "../../services/modalForm/modalFromSlice";
-import { connect } from "react-redux";
+import { tabsData } from './data';
+import { handleCurrentForm } from '../../services/modalForm/modalFromSlice';
 
 const renderTab = (item, index, handleCurrentFormAction) => {
   const { name, form } = item;
@@ -19,10 +19,8 @@ function TabBar({ currentForm, handleCurrentFormAction }) {
   return (
     <S.TabBarContainer>
       <S.TabBar>
-        {tabsData &&
-          tabsData.map((item, index) =>
-            renderTab(item, index, handleCurrentFormAction)
-          )}
+        {tabsData
+          && tabsData.map((item, index) => renderTab(item, index, handleCurrentFormAction))}
         <S.ActiveTab currentForm={currentForm} />
       </S.TabBar>
     </S.TabBarContainer>

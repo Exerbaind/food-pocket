@@ -1,15 +1,14 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { connect } from "react-redux";
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { connect } from 'react-redux';
 
-import { S } from "./styles";
+import { FiMenu } from 'react-icons/fi';
+import { CgClose } from 'react-icons/cg';
+import { S } from './styles';
 
-import { FiMenu } from "react-icons/fi";
-import { CgClose } from "react-icons/cg";
-
-import { data } from "../data";
-import { handleMenu } from "../../../services/menu/menuSlice";
+import { data } from '../data';
+import { handleMenu } from '../../../services/menu/menuSlice';
 
 const renderMenuIcon = (menuActive) => {
   if (menuActive) {
@@ -48,8 +47,8 @@ function DesktopMenu({ menuActive, handleMenuAction, showForm }) {
         {renderMenuIcon(menuActive)}
       </S.MenuHandler>
       <S.MenuContainer>
-        {data &&
-          data.map((item, index) => renderMenuItems(item, index, menuActive))}
+        {data
+          && data.map((item, index) => renderMenuItems(item, index, menuActive))}
       </S.MenuContainer>
     </S.Menu>
   );

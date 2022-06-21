@@ -1,6 +1,6 @@
-import React from "react";
-import AppInput from "../../../AppInput";
-import { S } from "../styles";
+import React from 'react';
+import AppInput from '../../../AppInput';
+import { S } from '../styles';
 
 function MenuForm() {
   return (

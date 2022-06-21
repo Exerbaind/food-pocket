@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { S } from "./styles";
-import PropTypes from "prop-types";
-import { buttonValidator, fieldsValidator } from "./validators";
-
-import { HiCamera } from "react-icons/hi";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { HiCamera } from 'react-icons/hi';
+import { S } from './styles';
+import { buttonValidator, fieldsValidator } from './validators';
 
 const renderIcon = (icon, onIconMethod) => {
-  if (icon === "camera") {
+  if (icon === 'camera') {
     return (
       <S.InputIcon onClick={onIconMethod}>
         <HiCamera color="rgba(38, 135, 92, 1)" />
@@ -22,8 +21,8 @@ const handleChange = (e, onChange) => {
 };
 
 const handleBlur = (e, type, setError, setValid, setSuccess, onBlur) => {
-  const value = e.target.value;
-  const name = e.target.name;
+  const { value } = e.target;
+  const { name } = e.target;
   const isValid = fieldsValidator(type, value);
   const { error, valid } = isValid;
   if (valid) {
@@ -51,11 +50,11 @@ function AppInput({
   icon,
   onIconMethod,
 }) {
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [valid, setValid] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  if (type === "submit") {
+  if (type === 'submit') {
     return (
       <S.InputButton
         value={buttonText}
@@ -70,7 +69,7 @@ function AppInput({
       {label && (
         <S.InputLabel htmlFor={name}>
           {label}
-          {required && "*"}
+          {required && '*'}
         </S.InputLabel>
       )}
       <S.InputBlock>
@@ -81,9 +80,7 @@ function AppInput({
           placeholder={placeholder}
           required={required}
           onChange={(e) => handleChange(e, onChange)}
-          onBlur={(e) =>
-            handleBlur(e, type, setError, setValid, setSuccess, onBlur)
-          }
+          onBlur={(e) => handleBlur(e, type, setError, setValid, setSuccess, onBlur)}
           error={error}
           success={success}
           step="0.01"
@@ -114,7 +111,7 @@ AppInput.defaultProps = {
   label: null,
   placeholder: null,
   required: false,
-  buttonText: "",
+  buttonText: '',
   buttonState: null,
   onChange: () => {},
   onBlur: () => {},

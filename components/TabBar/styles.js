@@ -1,12 +1,12 @@
-import styled, { css } from "styled-components";
-import { MAIN_COLORS } from "../../common/styles/styles";
+import styled, { css } from 'styled-components';
+import { MAIN_COLORS } from '../../common/styles/styles';
 
 export const S = {};
 
 const activeTabPositions = {
-  dish: "left: 3px;",
-  product: "left: 50%; transform: translateX(-50%);",
-  menu: "left: calc(100% - 3px); transform: translateX(-100%);",
+  dish: 'left: 3px;',
+  product: 'left: 50%; transform: translateX(-50%);',
+  menu: 'left: calc(100% - 3px); transform: translateX(-100%);',
 };
 
 S.TabBarContainer = styled.div`
@@ -61,9 +61,8 @@ S.ActiveTab = styled.div`
   border-radius: 5px;
   transition: 0.3s;
 
-  ${({ currentForm }) =>
-    currentForm &&
-    css`
+  ${({ currentForm }) => currentForm
+    && css`
       ${activeTabPositions[currentForm]}
     `}
 `;

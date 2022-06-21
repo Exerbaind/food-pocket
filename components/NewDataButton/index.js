@@ -1,13 +1,13 @@
-import React from "react";
-import { S } from "./styles";
+import React from 'react';
 
-import { FiPlus } from "react-icons/fi";
-import { connect } from "react-redux";
+import { FiPlus } from 'react-icons/fi';
+import { connect } from 'react-redux';
+import { S } from './styles';
 
-import { handleModalForm } from "../../services/modalForm/modalFromSlice";
+import { handleModalForm } from '../../services/modalForm/modalFromSlice';
 
 function NewDataButton({ showForm, handleModalFormAction }) {
-  const buttonText = showForm ? "Закрыть" : "Добавить";
+  const buttonText = showForm ? 'Закрыть' : 'Добавить';
   return (
     <S.Button onClick={handleModalFormAction} showForm={showForm}>
       <FiPlus color="white" />

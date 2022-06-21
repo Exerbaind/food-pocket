@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   active: false,
 };
 
 const menuSlice = createSlice({
-  name: "menu",
+  name: 'menu',
   initialState,
   reducers: {
     handleMenu: (state) => {

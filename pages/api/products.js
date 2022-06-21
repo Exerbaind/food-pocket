@@ -1,9 +1,9 @@
-import clientPromise from "../../server/mongodb";
+import clientPromise from '../../server/mongodb';
 
 export default async function handler(req, res) {
   const { method } = req;
   switch (method) {
-    case "GET": {
+    case 'GET': {
       return getProducts(req, res);
     }
   }
@@ -12,8 +12,8 @@ export default async function handler(req, res) {
 async function getProducts(req, res) {
   try {
     const client = await clientPromise;
-    const db = client.db("ProductsDatabase");
-    const data = await db.collection("ProductsList").find({}).toArray();
+    const db = client.db('ProductsDatabase');
+    const data = await db.collection('ProductsList').find({}).toArray();
     return res.json({
       message: JSON.parse(JSON.stringify(data)),
       success: true,

@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
-import { connect } from "react-redux";
-import { setBarcodeData } from "../../services/barcode/barcodeSlice";
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { connect } from 'react-redux';
+import { setBarcodeData } from '../../services/barcode/barcodeSlice';
 
 const BarcodeScannerComponent = dynamic(
-  () => import("react-qr-barcode-scanner"),
-  { ssr: false }
+  () => import('react-qr-barcode-scanner'),
+  { ssr: false },
 );
 
 const handleBarcode = (
   err,
   result,
   setBarcodeDataAction,
-  handleBarcodeAction
+  handleBarcodeAction,
 ) => {
   if (result) {
     setBarcodeDataAction(result);
@@ -27,15 +27,11 @@ function BarcodeReader({
   handleBarcodeAction,
 }) {
   return (
-    <>
-      <BarcodeScannerComponent
-        width="100%"
-        height={200}
-        onUpdate={(err, result) =>
-          handleBarcode(err, result, setBarcodeDataAction, handleBarcodeAction)
-        }
-      />
-    </>
+    <BarcodeScannerComponent
+      width="100%"
+      height={200}
+      onUpdate={(err, result) => handleBarcode(err, result, setBarcodeDataAction, handleBarcodeAction)}
+    />
   );
 }
 
