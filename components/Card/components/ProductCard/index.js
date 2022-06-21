@@ -16,11 +16,13 @@ function ProductCard({ item }) {
   const {
     productName,
     nutritions: { calories, proteins, fats, carbohydrates },
+    barcode,
     _id,
   } = item;
   return (
     <S.Card key={_id}>
       <S.Name>{productName}</S.Name>
+      {barcode && <p>{barcode}</p>}
       <S.Button onClick={() => handleDelete(_id)}>Удалить</S.Button>
     </S.Card>
   );
