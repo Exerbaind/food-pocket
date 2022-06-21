@@ -7,7 +7,8 @@ import { S } from "../styles";
 
 import { handleShowMessage } from "../../../../services/message/messageSlice";
 import { handleModalForm } from "../../../../services/modalForm/modalFromSlice";
-import { handleBarcodeModal } from "../../../../services/barcode/barcodeSlice";
+import { handleBarcode } from "../../../../services/barcode/barcodeSlice";
+import BarcodeReader from "../../../BarcodeReader";
 
 const propsList = {
   nutritions: "calories,proteins,fats,carbohydrates",
@@ -58,11 +59,13 @@ const handleBlur = (
 function ProductForm({
   handleModalFormAction,
   handleShowMessageAction,
-  // handleBarcodeModalAction,
+  handleBarcodeAction,
+  barcodeActive,
+  barcodeData,
 }) {
   const [formData, setFormData] = useState({
     productName: "",
-    // barcode: "",
+    barcode: barcodeData,
     nutritions: {
       calories: null,
       proteins: null,
@@ -77,10 +80,10 @@ function ProductForm({
       error: "",
       isValid: false,
     },
-    // barcode: {
-    //   error: "",
-    //   isValid: false,
-    // },
+    barcode: {
+      error: "",
+      isValid: false,
+    },
     calories: {
       error: "",
       isValid: false,
@@ -122,7 +125,7 @@ function ProductForm({
         }
         required
       />
-      {/* <AppInput
+      <AppInput
         type="number"
         name="barcode"
         label="Штрих-код"
@@ -133,9 +136,10 @@ function ProductForm({
         onBlur={(error, name, valid) =>
           handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
         }
-        onIconMethod={handleBarcodeModalAction}
+        onIconMethod={handleBarcodeAction}
         required
-      /> */}
+      />
+      {barcodeActive && <BarcodeReader />}
       <AppInput
         type="number"
         name="calories"
@@ -193,10 +197,15 @@ function ProductForm({
   );
 }
 
+const mapStateToProps = ({ barcodeService }) => ({
+  barcodeActive: barcodeService.active,
+  barcodeData: barcodeService.barcode,
+});
+
 const mapDispatchToProps = {
   handleShowMessageAction: handleShowMessage,
   handleModalFormAction: handleModalForm,
-  handleBarcodeModalAction: handleBarcodeModal,
+  handleBarcodeAction: handleBarcode,
 };
 
-export default connect(null, mapDispatchToProps)(ProductForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);

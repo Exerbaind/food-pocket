@@ -9,7 +9,7 @@ const barcodeSlice = createSlice({
   name: "barcode",
   initialState,
   reducers: {
-    handleBarcodeModal: (state) => {
+    handleBarcode: (state) => {
       state.active = !state.active;
     },
     setBarcodeData: (state, action) => {
@@ -18,6 +18,6 @@ const barcodeSlice = createSlice({
   },
 });
 
-export const { handleBarcodeModal } = barcodeSlice.actions;
+export const { handleBarcode, setBarcodeData } = barcodeSlice.actions;
 
 export default barcodeSlice.reducer;
