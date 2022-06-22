@@ -12,8 +12,7 @@ import NewDataButton from "../components/NewDataButton";
 import fetchRequest from "../common/utils/fetchRequest";
 import { handleError, setData } from "../services/dish/dishSlice";
 import ResultsList from "../components/ResultsList";
-// eslint-disable-next-line import/no-unresolved
-import MessagePopup from "../components/MessagePopUp";
+import MessagePopup from "../components/MessagePopup";
 
 function Home({ list }) {
   return (
