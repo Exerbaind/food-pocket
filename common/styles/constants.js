@@ -1,4 +1,4 @@
-export const MenuIcon = (
+const MenuIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"
@@ -14,3 +14,5 @@ export const MenuIcon = (
     />
   </svg>
 );
+
+export default MenuIcon;

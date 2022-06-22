@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { HiCamera } from 'react-icons/hi';
-import { S } from './styles';
-import { buttonValidator, fieldsValidator } from './validators';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { HiCamera } from "react-icons/hi";
+import { S } from "./styles";
+import { buttonValidator, fieldsValidator } from "./validators";
 
 const renderIcon = (icon, onIconMethod) => {
-  if (icon === 'camera') {
+  if (icon === "camera") {
     return (
       <S.InputIcon onClick={onIconMethod}>
         <HiCamera color="rgba(38, 135, 92, 1)" />
@@ -50,11 +50,12 @@ function AppInput({
   icon,
   onIconMethod,
 }) {
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [valid, setValid] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  if (type === 'submit') {
+  if (type === "submit") {
     return (
       <S.InputButton
         value={buttonText}
@@ -69,7 +70,7 @@ function AppInput({
       {label && (
         <S.InputLabel htmlFor={name}>
           {label}
-          {required && '*'}
+          {required && "*"}
         </S.InputLabel>
       )}
       <S.InputBlock>
@@ -80,7 +81,9 @@ function AppInput({
           placeholder={placeholder}
           required={required}
           onChange={(e) => handleChange(e, onChange)}
-          onBlur={(e) => handleBlur(e, type, setError, setValid, setSuccess, onBlur)}
+          onBlur={(e) =>
+            handleBlur(e, type, setError, setValid, setSuccess, onBlur)
+          }
           error={error}
           success={success}
           step="0.01"
@@ -111,12 +114,12 @@ AppInput.defaultProps = {
   label: null,
   placeholder: null,
   required: false,
-  buttonText: '',
+  buttonText: "",
   buttonState: null,
   onChange: () => {},
   onBlur: () => {},
   onIconMethod: () => {},
-  incon: null,
+  icon: null,
 };
 
 export default AppInput;

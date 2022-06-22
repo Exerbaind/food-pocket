@@ -1,13 +1,13 @@
-import styled, { css } from 'styled-components';
-import { MAIN_COLORS } from '../../../common/styles/styles';
+import styled, { css } from "styled-components";
+import { MAIN_COLORS } from "../../../common/styles/styles";
 
 export const S = {};
 
 S.Menu = styled.div`
   position: fixed;
   top: 0;
-  left: ${({ showForm }) => (showForm ? '-250px' : '0')};
-  width: ${({ active }) => (active ? '250px' : '50px')};
+  left: ${({ showForm }) => (showForm ? "-250px" : "0")};
+  width: ${({ active }) => (active ? "250px" : "50px")};
   height: 100%;
   background-color: ${MAIN_COLORS.white};
   box-shadow: 2px 0px 5px -5px rgba(34, 60, 80, 0.6);
@@ -76,8 +76,9 @@ S.MenuItemLink = styled.a`
     background-color: rgba(38, 135, 92, 1);
   }
 
-  ${({ active }) => active
-    && css`
+  ${({ active }) =>
+    active &&
+    css`
       background-color: ${MAIN_COLORS.green};
       &:hover {
         background-color: ${MAIN_COLORS.green};

@@ -13,21 +13,16 @@ export const buttonValidator = (data) => {
   return false;
 };
 
-export const fieldsValidator = (type, value) => {
-  if (type === 'text') return textValidator(value);
-  if (type === 'number') return numberValidator(value);
-};
-
 const textValidator = (value) => {
   if (value.length < 1) {
     return {
-      error: 'Обязательное поле',
+      error: "Обязательное поле",
       valid: false,
     };
   }
 
   return {
-    error: '',
+    error: "",
     valid: true,
   };
 };
@@ -35,13 +30,19 @@ const textValidator = (value) => {
 const numberValidator = (value) => {
   if (value.length < 1) {
     return {
-      error: 'Обязательное поле',
+      error: "Обязательное поле",
       valid: false,
     };
   }
 
   return {
-    error: '',
+    error: "",
     valid: true,
   };
+};
+
+// eslint-disable-next-line consistent-return
+export const fieldsValidator = (type, value) => {
+  if (type === "text") return textValidator(value);
+  if (type === "number") return numberValidator(value);
 };

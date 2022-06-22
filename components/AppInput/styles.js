@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { TEXT_COLORS, MAIN_COLORS } from '../../common/styles/styles';
+import styled, { css } from "styled-components";
+import { TEXT_COLORS, MAIN_COLORS } from "../../common/styles/styles";
 
 export const S = {};
 
@@ -37,13 +37,15 @@ S.InputField = styled.input`
   transition: 0.3s;
   outline: none;
 
-  ${({ error }) => !!error
-    && css`
+  ${({ error }) =>
+    !!error &&
+    css`
       border: 1px solid ${MAIN_COLORS.red};
     `};
 
-  ${({ success }) => success
-    && css`
+  ${({ success }) =>
+    success &&
+    css`
       border: 1px solid ${MAIN_COLORS.green};
     `};
 
@@ -97,8 +99,9 @@ S.InputButton = styled.input`
     background-color: rgba(38, 135, 92, 1);
   }
 
-  ${({ disabled }) => disabled
-    && css`
+  ${({ disabled }) =>
+    disabled &&
+    css`
       background-color: rgba(242, 244, 247, 1);
       cursor: default;
 

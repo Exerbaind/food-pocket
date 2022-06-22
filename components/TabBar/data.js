@@ -1,14 +1,14 @@
 export const tabsData = [
   {
-    name: 'Блюдо',
-    form: 'dish',
+    name: "Блюдо",
+    form: "dish",
   },
   {
-    name: 'Продукт',
-    form: 'product',
+    name: "Продукт",
+    form: "product",
   },
   {
-    name: 'Меню заведения',
-    form: 'menu',
+    name: "Меню заведения",
+    form: "menu",
   },
 ];

@@ -1,12 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 
-import TabBar from '../TabBar';
-import DishForm from './components/DishForm';
-import ProductForm from './components/ProductForm';
-import MenuForm from './components/MenuForm';
+import TabBar from "../TabBar";
+import DishForm from "./components/DishForm";
+import ProductForm from "./components/ProductForm";
+import MenuForm from "./components/MenuForm";
 
-import { S } from './styles';
+import { S } from "./styles";
 
 const formsList = {
   dish: <DishForm />,
@@ -30,5 +31,10 @@ const mapStateToProps = ({ modalFormService }) => ({
   showForm: modalFormService.showForm,
   currentForm: modalFormService.currentForm,
 });
+
+ModalForm.propTypes = {
+  showForm: PropTypes.bool.isRequired,
+  currentForm: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(ModalForm);

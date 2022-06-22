@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { AiOutlineCheckCircle } from 'react-icons/ai';
-import { S } from './styles';
+import React, { useEffect } from "react";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import { S } from "./styles";
 
-import { handleHideMessage } from '../../services/message/messageSlice';
+import { handleHideMessage } from "../../services/message/messageSlice";
 
 function MessagePopup({ isActive, text, handleHideMessageAction }) {
   useEffect(() => {
@@ -27,6 +28,12 @@ const mapStateToProps = ({ messageService }) => ({
 
 const mapDispatchToProps = {
   handleHideMessageAction: handleHideMessage,
+};
+
+MessagePopup.propTypes = {
+  isActive: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
+  handleHideMessageAction: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessagePopup);

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { BREAKPOINTS, MAIN_COLORS } from '../../common/styles/styles';
+import styled from "styled-components";
+import { BREAKPOINTS, MAIN_COLORS } from "../../common/styles/styles";
 
 export const S = {};
 
@@ -14,7 +14,8 @@ S.Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ showForm }) => (showForm ? MAIN_COLORS.red : MAIN_COLORS.green)};
+  background-color: ${({ showForm }) =>
+    showForm ? MAIN_COLORS.red : MAIN_COLORS.green};
   z-index: 10;
   opacity: 1;
   visibility: visible;
@@ -24,21 +25,23 @@ S.Button = styled.button`
   @media (max-width: ${BREAKPOINTS.mobile}) {
     padding: 10px 0;
     width: 95%;
-    bottom: ${({ showForm }) => (showForm ? '-10px' : '50px')};
+    bottom: ${({ showForm }) => (showForm ? "-10px" : "50px")};
   }
 
   &:hover {
-    background-color: ${({ showForm }) => (showForm ? 'rgba(144, 0, 32, 0.7)' : 'rgba(38, 135, 92, 0.7)')};
+    background-color: ${({ showForm }) =>
+      showForm ? "rgba(144, 0, 32, 0.7)" : "rgba(38, 135, 92, 0.7)"};
   }
 
   &:active {
-    background-color: ${({ showForm }) => (showForm ? 'rgba(144, 0, 32, 1)' : 'rgba(38, 135, 92, 1)')};
+    background-color: ${({ showForm }) =>
+      showForm ? "rgba(144, 0, 32, 1)" : "rgba(38, 135, 92, 1)"};
   }
 
   svg {
     width: 25px;
     height: 100%;
-    transform: ${({ showForm }) => (showForm ? 'rotate(45deg)' : 'rotate(0)')};
+    transform: ${({ showForm }) => (showForm ? "rotate(45deg)" : "rotate(0)")};
     transition: 0.3s;
   }
 `;

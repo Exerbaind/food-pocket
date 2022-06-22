@@ -1,11 +1,11 @@
-import styled, { css } from 'styled-components';
-import { MAIN_COLORS } from '../../../common/styles/styles';
+import styled, { css } from "styled-components";
+import { MAIN_COLORS } from "../../../common/styles/styles";
 
 export const S = {};
 
 S.Menu = styled.div`
   position: fixed;
-  bottom: ${({ showForm }) => (showForm ? '-60px' : '0')};
+  bottom: ${({ showForm }) => (showForm ? "-60px" : "0")};
   left: 0;
   height: 60px;
   width: 100vw;
@@ -13,8 +13,9 @@ S.Menu = styled.div`
   box-shadow: 0px -2px 5px -5px rgba(34, 60, 80, 0.6);
   z-index: 15;
   transition: 0.3s;
-  ${({ active }) => active
-    && css`
+  ${({ active }) =>
+    active &&
+    css`
       height: calc(100% - 50px);
     `}
 `;
@@ -37,8 +38,9 @@ S.MenuItemLink = styled.a`
   flex-direction: column;
   padding: 5px 0;
 
-  ${({ active }) => active
-    && css`
+  ${({ active }) =>
+    active &&
+    css`
       background-color: ${MAIN_COLORS.green};
       &:hover {
         background-color: ${MAIN_COLORS.green};

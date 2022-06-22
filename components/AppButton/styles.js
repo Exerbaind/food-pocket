@@ -1,17 +1,17 @@
-import styled from 'styled-components';
-import { TEXT_COLORS, THEME_COLORS } from '../../common/styles/styles';
+import styled from "styled-components";
+import { TEXT_COLORS, MAIN_COLORS } from "../../common/styles/styles";
 
 const sizeList = {
-  s: '35px',
-  m: '45px',
-  l: '55px',
+  s: "35px",
+  m: "45px",
+  l: "55px",
 };
 
 export const S = {};
 
 S.PrimaryButton = styled.button`
   height: ${({ size }) => sizeList[size]};
-  background-color: ${THEME_COLORS.primary};
+  background-color: ${MAIN_COLORS.primary};
   display: flex;
   align-items: center;
   padding: 0 20px;
@@ -32,7 +32,7 @@ S.PrimaryButton = styled.button`
 
 S.TransparentButton = styled.button`
   height: ${({ size }) => sizeList[size]};
-  background-color: ${THEME_COLORS.white};
+  background-color: ${MAIN_COLORS.white};
   display: flex;
   align-items: center;
   padding: 0 20px;

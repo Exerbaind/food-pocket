@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import fetchRequest from '../../../../common/utils/fetchRequest';
-import AppInput from '../../../AppInput';
+import React, { useState } from "react";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
+import fetchRequest from "../../../../common/utils/fetchRequest";
+import AppInput from "../../../AppInput";
 
-import { S } from '../styles';
+import { S } from "../styles";
 
-import { handleShowMessage } from '../../../../services/message/messageSlice';
-import { handleModalForm } from '../../../../services/modalForm/modalFromSlice';
-import { handleBarcode } from '../../../../services/barcode/barcodeSlice';
-import BarcodeReader from '../../../BarcodeReader';
+import { handleShowMessage } from "../../../../services/message/messageSlice";
+import { handleModalForm } from "../../../../services/modalForm/modalFromSlice";
+import { handleBarcode } from "../../../../services/barcode/barcodeSlice";
+import BarcodeReader from "../../../BarcodeReader";
 
 const propsList = {
-  nutritions: 'calories,proteins,fats,carbohydrates',
+  nutritions: "calories,proteins,fats,carbohydrates",
 };
 
 const handleSubmit = async (
   e,
   formData,
   handleModalFormAction,
-  handleShowMessageAction,
+  handleShowMessageAction
 ) => {
   e.preventDefault();
   try {
-    const response = await fetchRequest('/api/product', 'POST', formData);
+    const response = await fetchRequest("/api/product", "POST", formData);
     if (response && response.message) {
       handleModalFormAction();
       handleShowMessageAction(response.message);
@@ -48,11 +49,12 @@ const handleBlur = (
   name,
   valid,
   fieldsValidation,
-  setFieldsValidation,
-) => setFieldsValidation({
-  ...fieldsValidation,
-  [name]: { error, isValid: valid },
-});
+  setFieldsValidation
+) =>
+  setFieldsValidation({
+    ...fieldsValidation,
+    [name]: { error, isValid: valid },
+  });
 
 function ProductForm({
   handleModalFormAction,
@@ -62,7 +64,7 @@ function ProductForm({
   barcodeData,
 }) {
   const [formData, setFormData] = useState({
-    productName: '',
+    productName: "",
     barcode: barcodeData,
     nutritions: {
       calories: null,
@@ -75,46 +77,52 @@ function ProductForm({
   });
   const [fieldsValidation, setFieldsValidation] = useState({
     productName: {
-      error: '',
+      error: "",
       isValid: false,
     },
     barcode: {
-      error: '',
+      error: "",
       isValid: false,
     },
     calories: {
-      error: '',
+      error: "",
       isValid: false,
     },
     proteins: {
-      error: '',
+      error: "",
       isValid: false,
     },
     fats: {
-      error: '',
+      error: "",
       isValid: false,
     },
     carbohydrates: {
-      error: '',
+      error: "",
       isValid: false,
     },
   });
 
   return (
     <S.Form
-      onSubmit={(e) => handleSubmit(
-        e,
-        formData,
-        handleModalFormAction,
-        handleShowMessageAction,
-      )}
+      onSubmit={(e) =>
+        handleSubmit(
+          e,
+          formData,
+          handleModalFormAction,
+          handleShowMessageAction
+        )
+      }
     >
       <AppInput
         type="text"
         name="productName"
         label="Название продукта"
-        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
-        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
+        onChange={(value, name) =>
+          handleChange(value, name, setFormData, formData)
+        }
+        onBlur={(error, name, valid) =>
+          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
+        }
         required
       />
       <AppInput
@@ -122,8 +130,12 @@ function ProductForm({
         name="barcode"
         label="Штрих-код"
         icon="camera"
-        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
-        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
+        onChange={(value, name) =>
+          handleChange(value, name, setFormData, formData)
+        }
+        onBlur={(error, name, valid) =>
+          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
+        }
         onIconMethod={handleBarcodeAction}
         required
       />
@@ -132,32 +144,48 @@ function ProductForm({
         type="number"
         name="calories"
         label="Количество калорий"
-        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
-        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
+        onChange={(value, name) =>
+          handleChange(value, name, setFormData, formData)
+        }
+        onBlur={(error, name, valid) =>
+          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
+        }
         required
       />
       <AppInput
         type="number"
         name="proteins"
         label="Количество белков"
-        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
-        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
+        onChange={(value, name) =>
+          handleChange(value, name, setFormData, formData)
+        }
+        onBlur={(error, name, valid) =>
+          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
+        }
         required
       />
       <AppInput
         type="number"
         name="fats"
         label="Количество жиров"
-        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
-        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
+        onChange={(value, name) =>
+          handleChange(value, name, setFormData, formData)
+        }
+        onBlur={(error, name, valid) =>
+          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
+        }
         required
       />
       <AppInput
         type="number"
         name="carbohydrates"
         label="Количество углеводов"
-        onChange={(value, name) => handleChange(value, name, setFormData, formData)}
-        onBlur={(error, name, valid) => handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)}
+        onChange={(value, name) =>
+          handleChange(value, name, setFormData, formData)
+        }
+        onBlur={(error, name, valid) =>
+          handleBlur(error, name, valid, fieldsValidation, setFieldsValidation)
+        }
         required
       />
       <AppInput
@@ -178,6 +206,14 @@ const mapDispatchToProps = {
   handleShowMessageAction: handleShowMessage,
   handleModalFormAction: handleModalForm,
   handleBarcodeAction: handleBarcode,
+};
+
+ProductForm.propTypes = {
+  handleModalFormAction: PropTypes.func.isRequired,
+  handleShowMessageAction: PropTypes.func.isRequired,
+  handleBarcodeAction: PropTypes.func.isRequired,
+  barcodeActive: PropTypes.bool.isRequired,
+  barcodeData: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);

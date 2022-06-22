@@ -1,12 +1,13 @@
-import React from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { connect } from 'react-redux';
+import React from "react";
+import { PropTypes } from "prop-types";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { connect } from "react-redux";
 
-import { S } from './styles';
+import { S } from "./styles";
 
-import { data } from '../data';
-import { handleMenu } from '../../../services/menu/menuSlice';
+import { data } from "../data";
+import { handleMenu } from "../../../services/menu/menuSlice";
 
 const renderMenuHandler = (item, index, handleMenuAction, menuActive) => {
   const { defaultIcon, activeIcon } = item;
@@ -44,8 +45,10 @@ function MobileMenu({ menuActive, handleMenuAction, showForm }) {
   return (
     <S.Menu active={menuActive} showForm={showForm}>
       <S.MenuContainer>
-        {data
-          && data.map((item, index) => renderMenuItems(item, index, handleMenuAction, menuActive))}
+        {data &&
+          data.map((item, index) =>
+            renderMenuItems(item, index, handleMenuAction, menuActive)
+          )}
       </S.MenuContainer>
     </S.Menu>
   );
@@ -58,6 +61,12 @@ const mapStateToProps = ({ menuService, modalFormService }) => ({
 
 const mapDispatchToProps = {
   handleMenuAction: handleMenu,
+};
+
+MobileMenu.propTypes = {
+  menuActive: PropTypes.bool.isRequired,
+  handleMenuAction: PropTypes.func.isRequired,
+  showForm: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MobileMenu);

@@ -1,12 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentForm: 'dish', // dish || product || menu,
+  currentForm: "dish", // dish || product || menu,
   showForm: false,
 };
 
 const modalFormSlice = createSlice({
-  name: 'modalForm',
+  name: "modalForm",
   initialState,
   reducers: {
     handleModalForm: (state) => {

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   list: null,
@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const dishSlice = createSlice({
-  name: 'dish',
+  name: "dish",
   initialState,
   reducers: {
     setData: (state, action) => {

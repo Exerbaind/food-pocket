@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { MAIN_COLORS } from '../../common/styles/styles';
+import styled from "styled-components";
+import { MAIN_COLORS } from "../../common/styles/styles";
 
 export const S = {};
 
