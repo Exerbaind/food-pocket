@@ -7,7 +7,7 @@ S.MessageContainer = styled.div`
   position: fixed;
   top: 70px;
   right: 10px;
-  background-color: rgba(38, 135, 92, 0.6);
+  background-color: rgba(38, 135, 92, 0.9);
   padding: 10px 20px;
   border-radius: 5px;
   display: flex;

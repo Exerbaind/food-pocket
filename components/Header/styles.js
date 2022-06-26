@@ -12,6 +12,7 @@ S.Header = styled.div`
   box-shadow: 0px 2px 5px -5px rgba(34, 60, 80, 0.6);
   padding: 0 20px;
   z-index: 10;
+  background-color: ${MAIN_COLORS.white};
 `;
 
 S.Container = styled.div`

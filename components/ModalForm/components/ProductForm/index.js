@@ -62,6 +62,7 @@ function ProductForm({
   handleBarcodeAction,
   barcodeActive,
   barcodeData,
+  isMobile,
 }) {
   const [formData, setFormData] = useState({
     productName: "",
@@ -139,7 +140,7 @@ function ProductForm({
         type="number"
         name="barcode"
         label="Штрих-код"
-        icon="camera"
+        icon={isMobile ? "camera" : null}
         value={formData.barcode}
         onChange={(value, name) =>
           handleChange(value, name, setFormData, formData)
@@ -209,9 +210,10 @@ function ProductForm({
   );
 }
 
-const mapStateToProps = ({ barcodeService }) => ({
+const mapStateToProps = ({ barcodeService, appService }) => ({
   barcodeActive: barcodeService.active,
   barcodeData: barcodeService.barcode,
+  isMobile: appService.isMobile,
 });
 
 const mapDispatchToProps = {
@@ -226,6 +228,7 @@ ProductForm.propTypes = {
   handleBarcodeAction: PropTypes.func.isRequired,
   barcodeActive: PropTypes.bool.isRequired,
   barcodeData: PropTypes.number.isRequired,
+  isMobile: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);

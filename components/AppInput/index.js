@@ -123,7 +123,7 @@ AppInput.defaultProps = {
   onBlur: () => {},
   onIconMethod: () => {},
   icon: null,
-  value: null,
+  value: undefined,
 };
 
 export default AppInput;

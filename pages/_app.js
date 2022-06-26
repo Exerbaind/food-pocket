@@ -10,11 +10,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
-      <Header />
-      <Menu />
-      <CommonPageLayout>
-        <Component {...pageProps} />
-      </CommonPageLayout>
+      <div className="main">
+        <Header />
+        <Menu />
+        <CommonPageLayout>
+          <Component {...pageProps} />
+        </CommonPageLayout>
+      </div>
     </>
   );
 }
