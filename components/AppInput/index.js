@@ -25,12 +25,6 @@ const handleBlur = (e, type, setError, setValid, setSuccess, onBlur) => {
   const { name } = e.target;
   const isValid = fieldsValidator(type, value);
   const { error, valid } = isValid;
-  if (valid) {
-    setSuccess(valid);
-    setError(error);
-    setValid(valid);
-    return onBlur(error, name, valid);
-  }
   setSuccess(valid);
   setError(error);
   setValid(valid);

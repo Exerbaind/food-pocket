@@ -40,6 +40,7 @@ S.ModalContent = styled.div`
   @media (max-width: ${BREAKPOINTS.mobile}) {
     padding: 0 16px;
     margin-top: 20px;
+    margin-bottom: 200px;
   }
 `;
 

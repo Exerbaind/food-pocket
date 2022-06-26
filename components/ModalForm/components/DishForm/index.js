@@ -8,6 +8,7 @@ import { S } from "../styles";
 
 import { handleShowMessage } from "../../../../services/message/messageSlice";
 import { handleModalForm } from "../../../../services/modalForm/modalFromSlice";
+import UploadInput from "../../../UploadInput";
 
 const propsList = {
   nutritions: "calories,proteins,fats,carbohydrates",
@@ -64,6 +65,7 @@ function DishForm({ handleModalFormAction, handleShowMessageAction }) {
       fats: null,
       carbohydrates: null,
     },
+    image: null,
     // portion: "",
     // weight: null, // Если выбран вариант на 100 грмм порция, то покказывать это поле
   });
@@ -177,6 +179,7 @@ function DishForm({ handleModalFormAction, handleShowMessageAction }) {
         }
         required
       />
+      <UploadInput />
       <AppInput
         type="submit"
         buttonText="Отправить"

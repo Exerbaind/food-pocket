@@ -36,10 +36,10 @@ ProductCard.propTypes = {
   item: PropTypes.shape({
     productName: PropTypes.string,
     nutritions: PropTypes.shape({
-      calories: PropTypes.number,
-      carbohydrates: PropTypes.number,
-      fats: PropTypes.number,
-      proteins: PropTypes.number,
+      calories: PropTypes.string,
+      carbohydrates: PropTypes.string,
+      fats: PropTypes.string,
+      proteins: PropTypes.string,
     }),
     _id: PropTypes.string,
     barcode: PropTypes.string,

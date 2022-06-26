@@ -15,6 +15,7 @@ const handleDelete = async (id) => {
 function DishCard({ item }) {
   const {
     dishName,
+    image,
     nutritions: { calories, carbohydrates, fats, proteins },
     place,
     _id: mongoId,
@@ -23,6 +24,7 @@ function DishCard({ item }) {
   return (
     <S.Card key={mongoId}>
       <S.Name>{dishName}</S.Name>
+      {image && <img src={image} alt={`${dishName} на FoodPocket `} />}
       <p>{place}</p>
       <p>Калории: {calories}</p>
       <p>Белки: {proteins}</p>
@@ -36,11 +38,12 @@ function DishCard({ item }) {
 DishCard.propTypes = {
   item: PropTypes.shape({
     dishName: PropTypes.string,
+    image: PropTypes.string,
     nutritions: PropTypes.shape({
-      calories: PropTypes.number,
-      carbohydrates: PropTypes.number,
-      fats: PropTypes.number,
-      proteins: PropTypes.number,
+      calories: PropTypes.string,
+      carbohydrates: PropTypes.string,
+      fats: PropTypes.string,
+      proteins: PropTypes.string,
     }),
     _id: PropTypes.string,
     place: PropTypes.string,
