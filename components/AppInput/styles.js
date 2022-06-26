@@ -17,10 +17,9 @@ S.InputLabel = styled.label`
 `;
 
 S.InputBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: ${({ icon }) => (icon ? "11fr 1fr" : "12fr")};
   width: 100%;
-  flex-wrap: nowrap;
   height: 40px;
 `;
 
@@ -63,8 +62,8 @@ S.InputIcon = styled.div`
   cursor: pointer;
 
   svg {
-    height: 100%;
-    width: 60%;
+    height: 25px;
+    width: 25px;
   }
 `;
 

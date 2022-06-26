@@ -2,21 +2,27 @@ import React from "react";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setBarcodeData } from "../../services/barcode/barcodeSlice";
+import {
+  setBarcodeData,
+  handleBarcode,
+} from "../../services/barcode/barcodeSlice";
+import { S } from "./styles";
 
 const BarcodeScannerComponent = dynamic(
   () => import("react-qr-barcode-scanner"),
   { ssr: false }
 );
 
-const handleBarcode = (
+const handleUpdate = (
   err,
   result,
   setBarcodeDataAction,
   handleBarcodeAction
 ) => {
   if (result) {
-    setBarcodeDataAction(result);
+    const { text } = result;
+    const barcodeNumber = +text;
+    setBarcodeDataAction(barcodeNumber);
     return handleBarcodeAction();
   }
 
@@ -26,13 +32,15 @@ const handleBarcode = (
 
 function BarcodeReader({ setBarcodeDataAction, handleBarcodeAction }) {
   return (
-    <BarcodeScannerComponent
-      width="100%"
-      height={200}
-      onUpdate={(err, result) =>
-        handleBarcode(err, result, setBarcodeDataAction, handleBarcodeAction)
-      }
-    />
+    <S.Container>
+      <BarcodeScannerComponent
+        width="100%"
+        height="100%"
+        onUpdate={(err, result) =>
+          handleUpdate(err, result, setBarcodeDataAction, handleBarcodeAction)
+        }
+      />
+    </S.Container>
   );
 }
 

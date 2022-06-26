@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   active: null,
-  barcode: "",
+  barcode: null,
 };
 
 const barcodeSlice = createSlice({

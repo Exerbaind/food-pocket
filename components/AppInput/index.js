@@ -49,6 +49,7 @@ function AppInput({
   buttonState,
   icon,
   onIconMethod,
+  value,
 }) {
   const [error, setError] = useState("");
   // eslint-disable-next-line no-unused-vars
@@ -73,12 +74,13 @@ function AppInput({
           {required && "*"}
         </S.InputLabel>
       )}
-      <S.InputBlock>
+      <S.InputBlock icon={icon}>
         <S.InputField
           type={type}
           name={name}
           id={name}
           placeholder={placeholder}
+          value={value}
           required={required}
           onChange={(e) => handleChange(e, onChange)}
           onBlur={(e) =>
@@ -107,6 +109,7 @@ AppInput.propTypes = {
   buttonState: PropTypes.shape({}),
   icon: PropTypes.string,
   onIconMethod: PropTypes.func,
+  value: PropTypes.number,
 };
 
 AppInput.defaultProps = {
@@ -120,6 +123,7 @@ AppInput.defaultProps = {
   onBlur: () => {},
   onIconMethod: () => {},
   icon: null,
+  value: null,
 };
 
 export default AppInput;

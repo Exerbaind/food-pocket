@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import fetchRequest from "../../../../common/utils/fetchRequest";
@@ -102,6 +102,16 @@ function ProductForm({
     },
   });
 
+  useEffect(() => {
+    setFormData({ ...formData, barcode: barcodeData });
+    setFieldsValidation({
+      ...fieldsValidation,
+      barcode: { error: "", isValid: true },
+    });
+  }, [barcodeData]);
+
+  console.log(barcodeData);
+
   return (
     <S.Form
       onSubmit={(e) =>
@@ -130,6 +140,7 @@ function ProductForm({
         name="barcode"
         label="Штрих-код"
         icon="camera"
+        value={formData.barcode}
         onChange={(value, name) =>
           handleChange(value, name, setFormData, formData)
         }
@@ -168,6 +179,7 @@ function ProductForm({
         type="number"
         name="fats"
         label="Количество жиров"
+        value={formData.nutritions.fats}
         onChange={(value, name) =>
           handleChange(value, name, setFormData, formData)
         }
@@ -213,7 +225,7 @@ ProductForm.propTypes = {
   handleShowMessageAction: PropTypes.func.isRequired,
   handleBarcodeAction: PropTypes.func.isRequired,
   barcodeActive: PropTypes.bool.isRequired,
-  barcodeData: PropTypes.string.isRequired,
+  barcodeData: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);
