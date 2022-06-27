@@ -5,13 +5,14 @@ export const S = {};
 
 S.ModalContainer = styled.div`
   position: fixed;
-  top: 50px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: ${MAIN_COLORS.white};
   display: flex;
   justify-content: center;
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   z-index: -1;
@@ -23,24 +24,16 @@ S.ModalContainer = styled.div`
       opacity: 1;
       visibility: visible;
       z-index: 5;
-      overflow-y: auto;
     `}
-
-  @media (max-width: ${BREAKPOINTS.mobile}) {
-    padding: 20px 0 50px 0;
-  }
 `;
 
 S.ModalContent = styled.div`
-  min-height: 100vh;
   width: 700px;
-  margin-top: 50px;
-  margin-bottom: 100px;
+  height: 100%;
 
   @media (max-width: ${BREAKPOINTS.mobile}) {
     padding: 0 16px;
     margin-top: 20px;
-    margin-bottom: 200px;
   }
 `;
 
@@ -49,4 +42,5 @@ S.ModalTitle = styled.p`
   color: ${MAIN_COLORS.green};
   font-family: "Rubik-Medium";
   text-align: center;
+  margin-top: 50px;
 `;

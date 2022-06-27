@@ -179,7 +179,11 @@ function DishForm({ handleModalFormAction, handleShowMessageAction }) {
         }
         required
       />
-      <UploadInput />
+      <UploadInput
+        onUpload={(image) =>
+          handleChange(image, "image", setFormData, formData)
+        }
+      />
       <AppInput
         type="submit"
         buttonText="Отправить"
