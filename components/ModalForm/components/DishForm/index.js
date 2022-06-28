@@ -55,7 +55,11 @@ const handleBlur = (
     [name]: { error, isValid: valid },
   });
 
-function DishForm({ handleModalFormAction, handleShowMessageAction }) {
+function DishForm({
+  handleModalFormAction,
+  handleShowMessageAction,
+  isMobile,
+}) {
   const [formData, setFormData] = useState({
     place: "",
     dishName: "",
@@ -179,11 +183,13 @@ function DishForm({ handleModalFormAction, handleShowMessageAction }) {
         }
         required
       />
-      <UploadInput
-        onUpload={(image) =>
-          handleChange(image, "image", setFormData, formData)
-        }
-      />
+      {isMobile && (
+        <UploadInput
+          onUpload={(image) =>
+            handleChange(image, "image", setFormData, formData)
+          }
+        />
+      )}
       <AppInput
         type="submit"
         buttonText="Отправить"
@@ -198,9 +204,14 @@ const mapDispatchToProps = {
   handleModalFormAction: handleModalForm,
 };
 
+const mapStateToProps = ({ appService }) => ({
+  isMobile: appService.isMobile,
+});
+
 DishForm.propTypes = {
   handleModalFormAction: PropTypes.func.isRequired,
   handleShowMessageAction: PropTypes.func.isRequired,
+  isMobile: PropTypes.bool.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(DishForm);
+export default connect(mapStateToProps, mapDispatchToProps)(DishForm);
