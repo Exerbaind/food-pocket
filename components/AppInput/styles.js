@@ -36,6 +36,10 @@ S.InputField = styled.input`
   transition: 0.3s;
   outline: none;
 
+  ::placeholder {
+    font-style: italic;
+  }
+
   ${({ error }) =>
     !!error &&
     css`

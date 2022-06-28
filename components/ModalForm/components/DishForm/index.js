@@ -115,6 +115,7 @@ function DishForm({
         type="text"
         name="place"
         label="Название заведения"
+        placeholder="Например, KFC"
         onChange={(value, name) =>
           handleChange(value, name, setFormData, formData)
         }
@@ -127,6 +128,7 @@ function DishForm({
         type="text"
         name="dishName"
         label="Название блюда"
+        placeholder="Название из меню"
         onChange={(value, name) =>
           handleChange(value, name, setFormData, formData)
         }
@@ -147,6 +149,7 @@ function DishForm({
         }
         required
       />
+      {/* TODO: добавить состав блюда */}
       <AppInput
         type="number"
         name="proteins"
