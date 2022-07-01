@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { BREAKPOINTS, MAIN_COLORS } from "../../common/styles/styles";
+import {
+  BREAKPOINTS,
+  MAIN_COLORS,
+  Z_INDEX_LIST,
+} from "../../common/styles/styles";
 
 export const S = {};
 
@@ -16,7 +20,7 @@ S.Button = styled.button`
   align-items: center;
   background-color: ${({ showForm }) =>
     showForm ? MAIN_COLORS.red : MAIN_COLORS.green};
-  z-index: 10;
+  z-index: ${Z_INDEX_LIST["2"]};
   opacity: 1;
   visibility: visible;
   cursor: pointer;

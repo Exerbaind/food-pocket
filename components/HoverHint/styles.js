@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MAIN_COLORS } from "../../common/styles/styles";
+import { MAIN_COLORS, Z_INDEX_LIST } from "../../common/styles/styles";
 
 const positionTypes = {
   top: `left: 50%; top: 0; transform: translate(-50%, -120%);`,
@@ -17,7 +17,7 @@ S.Container = styled.div`
   background-color: ${MAIN_COLORS.grey};
   opacity: 0;
   visibility: hidden;
-  z-index: -1;
+  z-index: ${Z_INDEX_LIST.hidden};
   transition: 0.3s;
 `;
 

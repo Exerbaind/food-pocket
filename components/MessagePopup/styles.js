@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { TEXT_COLORS } from "../../common/styles/styles";
+import { TEXT_COLORS, Z_INDEX_LIST } from "../../common/styles/styles";
 
 export const S = {};
 
@@ -15,7 +15,7 @@ S.MessageContainer = styled.div`
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  z-index: -1;
+  z-index: ${Z_INDEX_LIST.hidden};
   transition: 0.3s;
 
   ${({ active }) =>
@@ -23,7 +23,7 @@ S.MessageContainer = styled.div`
     css`
       opacity: 1;
       visibility: visible;
-      z-index: 20;
+      z-index: ${Z_INDEX_LIST.last};
     `}
 `;
 

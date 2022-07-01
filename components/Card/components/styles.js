@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { MAIN_COLORS, TEXT_COLORS } from "../../../common/styles/styles";
+import {
+  MAIN_COLORS,
+  TEXT_COLORS,
+  Z_INDEX_LIST,
+} from "../../../common/styles/styles";
 
 export const S = {};
 
@@ -67,7 +71,7 @@ S.Nutrition = styled.div`
     .hover-hint {
       opacity: 1;
       visibility: visible;
-      z-index: 1;
+      z-index: ${Z_INDEX_LIST.visible};
     }
   }
 `;

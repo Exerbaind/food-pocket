@@ -14,3 +14,12 @@ export const TEXT_COLORS = {
 export const BREAKPOINTS = {
   mobile: "500px",
 };
+
+export const Z_INDEX_LIST = {
+  hidden: "-1",
+  visible: 1,
+  1: 10,
+  2: 15,
+  3: 20,
+  last: 100,
+};

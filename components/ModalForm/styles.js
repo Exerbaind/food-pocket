@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
-import { MAIN_COLORS, BREAKPOINTS } from "../../common/styles/styles";
+import {
+  MAIN_COLORS,
+  BREAKPOINTS,
+  Z_INDEX_LIST,
+} from "../../common/styles/styles";
 
 export const S = {};
 
@@ -15,7 +19,7 @@ S.ModalContainer = styled.div`
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
-  z-index: -1;
+  z-index: ${Z_INDEX_LIST.hidden};
   transition: 0.3s;
 
   ${({ showForm }) =>
@@ -23,7 +27,7 @@ S.ModalContainer = styled.div`
     css`
       opacity: 1;
       visibility: visible;
-      z-index: 5;
+      z-index: ${Z_INDEX_LIST["1"]};
     `}
 `;
 

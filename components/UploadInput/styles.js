@@ -61,24 +61,6 @@ S.UploadedImage = styled.div`
   border-radius: 5px;
 `;
 
-// S.DeleteImage = styled.div`
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   background-color: rgba(144, 0, 32, 1);
-//   height: 25px;
-//   width: 25px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   z-index: 5;
-//   border-radius: 50%;
-//   transform: translate(30%, -30%);
-//   svg {
-//     transform: rotate(45deg);
-//   }
-// `;
-
 S.ImagePlank = styled.div`
   position: absolute;
   bottom: 10px;

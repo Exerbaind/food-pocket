@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { MAIN_COLORS } from "../../common/styles/styles";
+import { MAIN_COLORS, Z_INDEX_LIST } from "../../common/styles/styles";
 
 export const S = {};
 
@@ -38,7 +38,7 @@ S.Tab = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  z-index: 2;
+  z-index: ${Z_INDEX_LIST["1"]};
   cursor: pointer;
   transition: 0.3s;
 

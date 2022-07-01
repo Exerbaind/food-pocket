@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { MAIN_COLORS } from "../../../common/styles/styles";
+import { MAIN_COLORS, Z_INDEX_LIST } from "../../../common/styles/styles";
 
 export const S = {};
 
@@ -12,7 +12,7 @@ S.Menu = styled.div`
   background-color: ${MAIN_COLORS.white};
   box-shadow: 2px 0px 5px -5px rgba(34, 60, 80, 0.6);
   transition: 0.3s;
-  z-index: 15;
+  z-index: ${Z_INDEX_LIST["2"]};
   overflow: hidden;
 `;
 
