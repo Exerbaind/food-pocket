@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isMobile: false,
+  showDropdown: false,
 };
 
 const appSlice = createSlice({

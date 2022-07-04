@@ -18,8 +18,6 @@ function Home({ list }) {
   return (
     <>
       <Seo />
-      <NewDataButton />
-      <ModalForm />
       <ResultsList results={list} type="dish" />
       <MessagePopup />
     </>

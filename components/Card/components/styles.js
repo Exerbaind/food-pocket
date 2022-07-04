@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   MAIN_COLORS,
   TEXT_COLORS,
@@ -12,6 +12,8 @@ S.Card = styled.div`
   overflow: hidden;
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  position: relative;
+  transition: 0.3s;
 `;
 
 S.Image = styled.div`
@@ -97,15 +99,24 @@ S.CardHandler = styled.div`
   display: flex;
   justify-content: space-between;
   align-content: center;
-  padding: 16px;
+  padding: 10px 16px;
 `;
 
 S.HandlerItem = styled.div`
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: ${MAIN_COLORS.grey};
+  }
   svg {
-    height: 25px;
-    width: 25px;
+    height: 60%;
+    width: 60%;
   }
 `;
-
-S.Button = styled.button``;

@@ -6,7 +6,7 @@ export const S = {};
 S.Container = styled.div`
   padding: 100px;
 
-  @media (max-width: ${BREAKPOINTS.mobile}) {
+  @media (max-width: ${BREAKPOINTS.tablet}) {
     padding: 70px 16px;
   }
 `;

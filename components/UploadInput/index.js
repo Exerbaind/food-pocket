@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { PropTypes } from "prop-types";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { S } from "./styles";
+import { noImageBase64 } from "../../common/styles/constants";
 
 const convertToBase64 = (file, setImage, setLoading, onUpload) => {
   const reader = new FileReader();
@@ -25,7 +26,7 @@ const handleUpload = (e, setImage, setLoading, onUpload) => {
 
 const deleteImage = (setImage, onUpload) => {
   setImage(null);
-  onUpload(null);
+  onUpload(noImageBase64);
 };
 
 const renderImage = (image, setImage, onUpload) => {

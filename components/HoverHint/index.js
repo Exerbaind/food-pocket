@@ -12,7 +12,6 @@ function HoverHint({ type, position }) {
 }
 
 HoverHint.propTypes = {
-  children: PropTypes.shape({}).isRequired,
   type: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
 };

@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { PropTypes } from "prop-types";
 import {
   FaPagelines,
   FaHotjar,
   FaDrumstickBite,
-  FaPizzaSlice,
-  FaTint,
   FaHamburger,
-  FaEllipsisH,
   FaRegHeart,
+  FaRegEdit,
+  FaRegTrashAlt,
   FaHeart, // активное сердце
 } from "react-icons/fa";
 import { S } from "../styles";
@@ -79,10 +78,12 @@ function DishCard({ item }) {
           <FaRegHeart color="rgba(144, 0, 32, 1)" />
         </S.HandlerItem>
         <S.HandlerItem>
-          <FaEllipsisH color="#808080" />
+          <FaRegEdit color="rgb(38, 135, 92)" />
+        </S.HandlerItem>
+        <S.HandlerItem onClick={() => handleDelete(mongoId)}>
+          <FaRegTrashAlt color="#808080" />
         </S.HandlerItem>
       </S.CardHandler>
-      {/* <S.Button onClick={() => handleDelete(mongoId)}>Удалить</S.Button> */}
     </S.Card>
   );
 }

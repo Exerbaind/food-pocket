@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { MAIN_COLORS, Z_INDEX_LIST } from "../../common/styles/styles";
+import {
+  BREAKPOINTS,
+  MAIN_COLORS,
+  Z_INDEX_LIST,
+} from "../../common/styles/styles";
 
 export const S = {};
 

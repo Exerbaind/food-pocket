@@ -9,6 +9,7 @@ import { S } from "../styles";
 import { handleShowMessage } from "../../../../services/message/messageSlice";
 import { handleModalForm } from "../../../../services/modalForm/modalFromSlice";
 import UploadInput from "../../../UploadInput";
+import { noImageBase64 } from "../../../../common/styles/constants";
 
 const propsList = {
   nutritions: "calories,proteins,fats,carbohydrates",
@@ -69,7 +70,7 @@ function DishForm({
       fats: null,
       carbohydrates: null,
     },
-    image: null,
+    image: noImageBase64,
     // portion: "",
     // weight: null, // Если выбран вариант на 100 грмм порция, то покказывать это поле
   });

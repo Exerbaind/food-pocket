@@ -18,8 +18,6 @@ function Products({ list }) {
   return (
     <>
       <Seo />
-      <NewDataButton />
-      <ModalForm />
       <ResultsList results={list} type="product" />
       <MessagePopup />
     </>
