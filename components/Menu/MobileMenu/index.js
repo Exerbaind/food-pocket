@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import { S } from "./styles";
 
-import { data } from "../data";
+import { data } from "./data";
 import { handleMenu } from "../../../services/menu/menuSlice";
 
 const renderMenuHandler = (item, index, handleMenuAction, menuActive) => {
@@ -19,22 +19,37 @@ const renderMenuHandler = (item, index, handleMenuAction, menuActive) => {
   );
 };
 
+const renderMenuAction = (index, handler, icon, name) => {
+  return (
+    <S.MenuItem key={`${name}_${index}`}>
+      <S.MenuItemLink>
+        <S.MenuItemIcon>{icon}</S.MenuItemIcon>
+        <S.MenuItemName>{name}</S.MenuItemName>
+      </S.MenuItemLink>
+    </S.MenuItem>
+  );
+};
+
 const renderMenuItems = (item, index, handleMenuAction, menuActive) => {
   const router = useRouter();
-  const { mobileName, icon, link } = item;
+  const { name, icon, link, handler } = item;
 
   const activeLink = router.pathname === link;
 
-  if (!link) {
+  if (!link && !handler) {
     return renderMenuHandler(item, index, handleMenuAction, menuActive);
   }
 
+  if (handler) {
+    return renderMenuAction(index, handler, icon, name);
+  }
+
   return (
-    <S.MenuItem key={`${mobileName}_${index}`}>
+    <S.MenuItem key={`${name}_${index}`}>
       <Link href={link} passHref>
         <S.MenuItemLink active={activeLink}>
           <S.MenuItemIcon>{icon}</S.MenuItemIcon>
-          <S.MenuItemName>{mobileName}</S.MenuItemName>
+          <S.MenuItemName>{name}</S.MenuItemName>
         </S.MenuItemLink>
       </Link>
     </S.MenuItem>

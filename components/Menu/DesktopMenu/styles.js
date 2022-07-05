@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
-import { MAIN_COLORS, Z_INDEX_LIST } from "../../../common/styles/styles";
+import {
+  MAIN_COLORS,
+  TEXT_COLORS,
+  Z_INDEX_LIST,
+} from "../../../common/styles/styles";
 
 export const S = {};
 
@@ -43,10 +47,89 @@ S.MenuHandler = styled.button`
 `;
 
 S.MenuContainer = styled.nav`
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   list-style: none;
+`;
+
+S.DownloadItem = styled.div`
+  width: 100%;
+  max-height: 50px;
+  overflow: hidden;
+  transition: 0.3s;
+
+  ${({ active }) =>
+    active &&
+    css`
+      max-height: 500px;
+    `}
+`;
+
+S.DownloadContainer = styled.div`
+  width: 100%;
+  align-items: center;
+  display: block;
+  padding: 5px 10px;
+  display: flex;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.1);
+  transition: 0.3s;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+  }
+  &:active {
+    background-color: rgba(128, 128, 128, 0.3);
+  }
+`;
+
+S.DownloadIcon = styled.div`
+  min-width: 30px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+
+  ${({ active }) =>
+    active &&
+    css`
+      transform: rotate(45deg);
+    `}
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+`;
+
+S.DownloadText = styled.p`
+  font-size: 18px;
+  color: ${TEXT_COLORS.blackText};
+  margin-left: 10px;
+  white-space: nowrap;
+`;
+
+S.DownloadList = styled.div`
+  max-height: ${({ active }) => (active ? "500px" : 0)};
+  transition: 0.3s;
+`;
+
+S.DownloadListItem = styled.p`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px 5px 50px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.07);
+  }
+
+  &:active {
+    background-color: rgba(128, 128, 128, 0.15);
+  }
 `;
 
 S.MenuItem = styled.li`
