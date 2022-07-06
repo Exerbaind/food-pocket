@@ -21,8 +21,9 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
     // const { isMobile } = initScreenType(context);
     // store.dispatch(handleScreenType(isMobile));
+    const { isMobile } = initScreenType(context);
     const response = await fetchRequest("/api/dishes", "GET");
-    console.log(response);
+    // console.log(response);
     // if (response && response.error) {
     //   store.dispatch(handleError(response.error));
     // }
