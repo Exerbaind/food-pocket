@@ -5,7 +5,7 @@ export const S = {};
 
 S.Menu = styled.div`
   position: fixed;
-  bottom: ${({ showForm }) => (showForm ? "-60px" : "0")};
+  bottom: ${({ showModal }) => (showModal ? "-60px" : "0")};
   left: 0;
   height: 60px;
   width: 100vw;

@@ -3,7 +3,6 @@ import { PropTypes } from "prop-types";
 import { S } from "./styles";
 
 function Modal({ children, fullScreen, active }) {
-  console.log(children);
   if (fullScreen) {
     return <S.FullscreenModal active={active}>{children}</S.FullscreenModal>;
   }

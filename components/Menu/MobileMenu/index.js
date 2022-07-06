@@ -56,9 +56,9 @@ const renderMenuItems = (item, index, handleMenuAction, menuActive) => {
   );
 };
 
-function MobileMenu({ menuActive, handleMenuAction, showForm }) {
+function MobileMenu({ menuActive, handleMenuAction, showModal }) {
   return (
-    <S.Menu active={menuActive} showForm={showForm}>
+    <S.Menu active={menuActive} showModal={showModal}>
       <S.MenuContainer>
         {data &&
           data.map((item, index) =>
@@ -69,9 +69,9 @@ function MobileMenu({ menuActive, handleMenuAction, showForm }) {
   );
 }
 
-const mapStateToProps = ({ menuService, modalFormService }) => ({
+const mapStateToProps = ({ menuService, modalService }) => ({
   menuActive: menuService.active,
-  showForm: modalFormService.showForm,
+  showModal: modalService.showModal,
 });
 
 const mapDispatchToProps = {
@@ -81,7 +81,7 @@ const mapDispatchToProps = {
 MobileMenu.propTypes = {
   menuActive: PropTypes.bool.isRequired,
   handleMenuAction: PropTypes.func.isRequired,
-  showForm: PropTypes.bool.isRequired,
+  showModal: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MobileMenu);

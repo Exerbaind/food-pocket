@@ -6,20 +6,24 @@ import { initScreenType } from "../common/utils/initScreenType";
 
 import { wrapper } from "../services/store";
 import { handleScreenType } from "../services/app/appSlice";
-
-import ModalForm from "../components/ModalForm";
-import NewDataButton from "../components/NewDataButton";
 import fetchRequest from "../common/utils/fetchRequest";
 import { handleError, setData } from "../services/dish/dishSlice";
 import ResultsList from "../components/ResultsList";
 import MessagePopup from "../components/MessagePopup";
+import Modal from "../components/Modal";
+import Forms from "../components/Forms";
 
-function Home({ list }) {
+function Home({ list, showModal, edit, currentForm }) {
+  console.log(showModal);
   return (
     <>
       <Seo />
       <ResultsList results={list} type="dish" />
       <MessagePopup />
+      <Modal active={showModal} fullScreen>
+        {/* <Forms edit={edit} currentForm={currentForm} /> */}
+        <p>hello</p>
+      </Modal>
     </>
   );
 }
@@ -39,9 +43,17 @@ export const getServerSideProps = wrapper.getServerSideProps(
   }
 );
 
-const mapStateToProps = ({ appService, dishService }) => ({
+const mapStateToProps = ({
+  appService,
+  dishService,
+  modalService,
+  formService,
+}) => ({
   isMobile: appService.isMobile,
   list: dishService.list,
+  showModal: modalService.showForm,
+  edit: formService.edit,
+  currentForm: formService.currentForm,
 });
 
 const mapDispatchToProps = {
@@ -50,6 +62,9 @@ const mapDispatchToProps = {
 
 Home.propTypes = {
   list: PropTypes.arrayOf(PropTypes.shape({})),
+  showModal: PropTypes.bool.isRequired,
+  edit: PropTypes.bool.isRequired,
+  currentForm: PropTypes.string.isRequired,
 };
 
 Home.defaultProps = {

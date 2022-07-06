@@ -10,7 +10,7 @@ export const S = {};
 S.Menu = styled.div`
   position: fixed;
   top: 0;
-  left: ${({ showForm }) => (showForm ? "-250px" : "0")};
+  left: ${({ showModal }) => (showModal ? "-250px" : "0")};
   width: ${({ active }) => (active ? "250px" : "50px")};
   height: 100%;
   background-color: ${MAIN_COLORS.white};

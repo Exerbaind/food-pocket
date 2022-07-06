@@ -11,6 +11,15 @@ import { S } from "./styles";
 
 import { data } from "./data";
 import { handleMenu } from "../../../services/menu/menuSlice";
+import { handleModal } from "../../../services/modal/modalSlice";
+import { handleForm } from "../../../services/form/formSlice";
+
+const handleDish = (handleModalAction, handleFormAction) => {
+  const currentForm = "dish";
+  const edit = false;
+  handleFormAction({ currentForm, edit });
+  handleModalAction();
+};
 
 const handleDownloadItem = (
   menuActive,
@@ -56,10 +65,18 @@ const renderMenuItems = (item, index, menuActive) => {
   );
 };
 
-const renderDownloadList = (listActive) => {
+const renderDownloadList = (
+  listActive,
+  handleModalAction,
+  handleFormAction
+) => {
   return (
     <S.DownloadList active={listActive}>
-      <S.DownloadListItem>Блюдо</S.DownloadListItem>
+      <S.DownloadListItem
+        onClick={() => handleDish(handleModalAction, handleFormAction)}
+      >
+        Блюдо
+      </S.DownloadListItem>
       <S.DownloadListItem>Продукт</S.DownloadListItem>
       <S.DownloadListItem>Меню</S.DownloadListItem>
     </S.DownloadList>
@@ -70,7 +87,9 @@ const renderDownloadHandler = (
   menuActive,
   handleMenuAction,
   showDownloadList,
-  setShowDownloadList
+  setShowDownloadList,
+  handleModalAction,
+  handleFormAction
 ) => {
   const listActive = menuActive && showDownloadList;
   return (
@@ -90,25 +109,21 @@ const renderDownloadHandler = (
         </S.DownloadIcon>
         {menuActive && <S.DownloadText>Добавить</S.DownloadText>}
       </S.DownloadContainer>
-      {renderDownloadList(listActive)}
+      {renderDownloadList(listActive, handleModalAction, handleFormAction)}
     </S.DownloadItem>
   );
-  // return (
-  //   <S.MenuItem>
-  //     <S.MenuItemLink>
-  //       <S.MenuItemIcon>
-  //         <HiPlus />
-  //       </S.MenuItemIcon>
-  //       {menuActive && <S.MenuItemName>Добавить</S.MenuItemName>}
-  //     </S.MenuItemLink>
-  //   </S.MenuItem>
-  // );
 };
 
-function DesktopMenu({ menuActive, handleMenuAction, showForm }) {
+function DesktopMenu({
+  menuActive,
+  handleMenuAction,
+  showModal,
+  handleModalAction,
+  handleFormAction,
+}) {
   const [showDownloadList, setShowDownloadList] = useState(false);
   return (
-    <S.Menu active={menuActive} showForm={showForm}>
+    <S.Menu active={menuActive} showModal={showModal}>
       <S.MenuHandler onClick={handleMenuAction}>
         {renderMenuIcon(menuActive)}
       </S.MenuHandler>
@@ -117,7 +132,9 @@ function DesktopMenu({ menuActive, handleMenuAction, showForm }) {
           menuActive,
           handleMenuAction,
           showDownloadList,
-          setShowDownloadList
+          setShowDownloadList,
+          handleModalAction,
+          handleFormAction
         )}
         {data &&
           data.map((item, index) => renderMenuItems(item, index, menuActive))}
@@ -126,19 +143,23 @@ function DesktopMenu({ menuActive, handleMenuAction, showForm }) {
   );
 }
 
-const mapStateToProps = ({ menuService, modalFormService }) => ({
+const mapStateToProps = ({ menuService, modalService }) => ({
   menuActive: menuService.active,
-  showForm: modalFormService.showForm,
+  showModal: modalService.showModal,
 });
 
 const mapDispatchToProps = {
   handleMenuAction: handleMenu,
+  handleModalAction: handleModal,
+  handleFormAction: handleForm,
 };
 
 DesktopMenu.propTypes = {
   menuActive: PropTypes.bool.isRequired,
   handleMenuAction: PropTypes.func.isRequired,
-  showForm: PropTypes.bool.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  handleModalAction: PropTypes.func.isRequired,
+  handleFormAction: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DesktopMenu);
