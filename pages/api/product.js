@@ -8,7 +8,7 @@ async function addProduct(req, res) {
     const db = client.db("ProductsDatabase");
     await db.collection("ProductsList").insertOne(JSON.parse(req.body));
     return res.json({
-      message: "Продукт успешно отправлен!",
+      data: "Продукт успешно отправлен!",
       success: true,
     });
   } catch (error) {
@@ -25,7 +25,7 @@ async function deleteProduct(req, res) {
       .collection("ProductsList")
       .deleteOne({ _id: new ObjectId(req.body) });
     return res.json({
-      message: "Продукт успешно удален!",
+      data: "Продукт успешно удален!",
       success: true,
     });
   } catch (error) {
