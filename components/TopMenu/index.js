@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import SearchBar from "../SearchBar";
+import { SearchBar } from "..";
 import { Container, Title, IconsContainer, IconItem } from "./styles";
 
 const handleSearchBar = (iconsPayload) => {
@@ -30,7 +30,7 @@ const renderIcons = (iconsPayload) => {
   );
 };
 
-function TopMenu() {
+export function TopMenu() {
   const [activeSearch, setActiveSearch] = useState(false);
   const iconsPayload = { activeSearch, setActiveSearch };
   return (
@@ -43,5 +43,3 @@ function TopMenu() {
     </>
   );
 }
-
-export default TopMenu;
