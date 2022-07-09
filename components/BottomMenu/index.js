@@ -1,7 +1,5 @@
 import React from "react";
 
-function BottomMenu() {
+export function BottomMenu() {
   return <div>BottomMenu</div>;
 }
-
-export default BottomMenu;

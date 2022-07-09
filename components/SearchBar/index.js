@@ -13,5 +13,3 @@ export function SearchBar({ active }) {
 SearchBar.propTypes = {
   active: PropTypes.bool.isRequired,
 };
-
-// export default SearchBar;

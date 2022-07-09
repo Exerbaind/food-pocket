@@ -1,5 +1,4 @@
 import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
 import Seo from "../seo/mainSeo";
 
 import { initScreenType } from "../common/utils/initScreenType";
@@ -19,9 +18,8 @@ function DishPage() {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
-    // const { isMobile } = initScreenType(context);
-    // store.dispatch(handleScreenType(isMobile));
     const { isMobile } = initScreenType(context);
+    store.dispatch(handleScreenType(isMobile));
     const response = await fetchRequest("/api/dishes", "GET");
     // console.log(response);
     // if (response && response.error) {

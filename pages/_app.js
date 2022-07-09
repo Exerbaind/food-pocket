@@ -1,18 +1,18 @@
 import { wrapper } from "../services/store";
 
 import { GlobalStyles } from "../common/styles/global";
-import { PageLayout } from "../layouts";
-import { TopMenu } from "../components";
+import * as layouts from "../layouts";
+import * as components from "../components";
 
 // eslint-disable-next-line react/prop-types
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
-      <PageLayout>
-        <TopMenu />
+      <layouts.PageLayout>
+        <components.TopMenu />
         <Component {...pageProps} />
-      </PageLayout>
+      </layouts.PageLayout>
     </>
   );
 }
