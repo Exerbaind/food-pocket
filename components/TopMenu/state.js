@@ -1,13 +1,21 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { handleMenuItemType as handleMenuItemTypeAction } from "../../services/app/appSlice";
+import {
+  handleMenuItemType as handleMenuItemTypeAction,
+  handleBottomMenu as handleBottomMenuAction,
+} from "../../services/menu/menuSlice";
 
 export const getState = () => {
-  const menuItemType = useSelector(({ appService }) => appService.menuItemType);
+  const menuItemType = useSelector(
+    ({ menuService }) => menuService.menuItemType
+  );
+  const showBottomMenu = useSelector(
+    ({ menuService }) => menuService.showBottomMenu
+  );
   const isMobile = useSelector(({ appService }) => appService.isMobile);
 
-  return { isMobile, menuItemType };
+  return { isMobile, menuItemType, showBottomMenu };
 };
 
 export const getActions = () => {
@@ -17,6 +25,9 @@ export const getActions = () => {
     () => ({
       handleMenuItemType(type) {
         dispatch(handleMenuItemTypeAction(type));
+      },
+      handleBottomMenu() {
+        dispatch(handleBottomMenuAction());
       },
     }),
     [dispatch]

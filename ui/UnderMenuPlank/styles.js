@@ -10,7 +10,10 @@ export const Container = styled.div`
   position: fixed;
   top: 60px;
   width: 1200px;
-  padding: 5px 16px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0px 16px;
   ${COLORS.bluredBackground}
   backdrop-filter: blur(3px);
   border-radius: ${BORDER_RADIUS.standard};

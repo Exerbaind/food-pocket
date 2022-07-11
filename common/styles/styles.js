@@ -14,6 +14,9 @@ export const COLORS = {
   primary: "#43a047",
   bluredBackground:
     "background-color: rgba(160, 160, 160, 0.5); box-shadow: 0 3px 5px rgba(160, 160, 160, 0.2);",
+  grey: "#e0e0e0",
+  white: "#FFFFFF",
+  black: "#222222",
 };
 
 export const BREAKPOINTS = {

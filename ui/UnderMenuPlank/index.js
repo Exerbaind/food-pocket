@@ -9,5 +9,9 @@ export function UnderMenuPlank({ active, children }) {
 
 UnderMenuPlank.propTypes = {
   active: PropTypes.bool.isRequired,
-  children: PropTypes.shape({}).isRequired,
+  children: PropTypes.shape({}),
+};
+
+UnderMenuPlank.defaultProps = {
+  children: null,
 };
