@@ -8,9 +8,9 @@ import {
 
 export const Container = styled.div`
   position: fixed;
-  top: 60px;
+  top: 65px;
   width: 1200px;
-  height: 40px;
+  height: 45px;
   display: flex;
   align-items: center;
   padding: 0px 16px;

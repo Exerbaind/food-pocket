@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { CgSearch, CgMenu } from "react-icons/cg";
 import { HiPlus } from "react-icons/hi";
 import { VscChromeClose } from "react-icons/vsc";
@@ -10,6 +10,7 @@ import { Container, Title, IconsContainer, IconItem } from "./styles";
 const renderPlankContent = (menuItemType) => {
   const menuList = {
     0: <components.SearchBar />,
+    1: <components.ClientHandlerBar />,
     2: <components.PagesBar />,
   };
 

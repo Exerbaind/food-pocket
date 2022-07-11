@@ -3,10 +3,13 @@ import { BORDER_RADIUS, COLORS } from "../../../common/styles/styles";
 
 export const Container = styled.div`
   width: 100%;
-  padding: 5px 0;
   ${COLORS.bluredBackground}
   backdrop-filter: blur(3px);
   border-radius: ${BORDER_RADIUS.standard};
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Title = styled.p`
