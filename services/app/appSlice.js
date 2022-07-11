@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isMobile: false,
+  menuItemType: null,
 };
 
 const appSlice = createSlice({
@@ -11,9 +12,12 @@ const appSlice = createSlice({
     handleScreenType: (state, action) => {
       state.isMobile = action.payload;
     },
+    handleMenuItemType: (state, action) => {
+      state.menuItemType = action.payload;
+    },
   },
 });
 
-export const { handleScreenType } = appSlice.actions;
+export const { handleScreenType, handleMenuItemType } = appSlice.actions;
 
 export default appSlice.reducer;
