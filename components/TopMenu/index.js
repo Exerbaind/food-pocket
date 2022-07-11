@@ -1,21 +1,34 @@
 import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { MdClose } from "react-icons/md";
+import { CgSearch, CgMenu } from "react-icons/cg";
+import { HiPlus } from "react-icons/hi";
+import { VscChromeClose } from "react-icons/vsc";
 import { SearchBar } from "..";
 import { Container, Title, IconsContainer, IconItem } from "./styles";
 
-const handleSearchBar = (iconsPayload) => {
-  const { activeSearch, setActiveSearch } = iconsPayload;
-  return setActiveSearch(!activeSearch);
+const handleCloseMenu = ({
+  setActiveSearch,
+  setActivePages,
+  setActiveHandler,
+}) => {
+  setActiveSearch(false);
+  setActivePages(false);
+  setActiveHandler(false);
 };
 
 const renderIcons = (iconsPayload) => {
-  const { activeSearch } = iconsPayload;
-  if (activeSearch) {
+  const {
+    activeSearch,
+    activePages,
+    activeHandler,
+    setActiveSearch,
+    setActivePages,
+    setActiveHandler,
+  } = iconsPayload;
+  if (activeSearch || activePages || activeHandler) {
     return (
       <IconsContainer>
-        <IconItem onClick={() => handleSearchBar(iconsPayload)}>
-          <MdClose />
+        <IconItem onClick={() => handleCloseMenu(iconsPayload)}>
+          <VscChromeClose />
         </IconItem>
       </IconsContainer>
     );
@@ -23,8 +36,14 @@ const renderIcons = (iconsPayload) => {
 
   return (
     <IconsContainer>
-      <IconItem onClick={() => handleSearchBar(iconsPayload)}>
-        <FaSearch />
+      <IconItem onClick={() => setActiveSearch(!activeSearch)}>
+        <CgSearch />
+      </IconItem>
+      <IconItem onClick={() => setActivePages(!activePages)}>
+        <HiPlus />
+      </IconItem>
+      <IconItem onClick={() => setActiveHandler(!activeHandler)}>
+        <CgMenu />
       </IconItem>
     </IconsContainer>
   );
@@ -32,7 +51,16 @@ const renderIcons = (iconsPayload) => {
 
 export function TopMenu() {
   const [activeSearch, setActiveSearch] = useState(false);
-  const iconsPayload = { activeSearch, setActiveSearch };
+  const [activePages, setActivePages] = useState(false);
+  const [activeHandler, setActiveHandler] = useState(false);
+  const iconsPayload = {
+    activeSearch,
+    setActiveSearch,
+    activePages,
+    setActivePages,
+    activeHandler,
+    setActiveHandler,
+  };
   return (
     <>
       <Container>

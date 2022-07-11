@@ -7,11 +7,15 @@ import { wrapper } from "../services/store";
 import { handleScreenType } from "../services/app/appSlice";
 import fetchRequest from "../common/utils/fetchRequest";
 
+import * as layouts from "../layouts";
+
 function DishPage() {
   return (
     <>
       <Seo />
-      <p>Hello</p>
+      <layouts.ContentLayout>
+        <p>Hello</p>
+      </layouts.ContentLayout>
     </>
   );
 }

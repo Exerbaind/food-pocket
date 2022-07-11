@@ -1,12 +1,12 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { Container } from "./styles";
+import * as ui from "../../ui";
 
 export function SearchBar({ active }) {
   return (
-    <Container active={active}>
+    <ui.UnderMenuPlank active={active}>
       <input type="text" />
-    </Container>
+    </ui.UnderMenuPlank>
   );
 }
 

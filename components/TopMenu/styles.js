@@ -44,6 +44,11 @@ export const IconItem = styled.div`
   justify-content: center;
   height: 100%;
   width: 25px;
+  margin-right: 15px;
+
+  &:last-child {
+    margin-right: 0;
+  }
   svg {
     height: 100%;
     width: 100%;
