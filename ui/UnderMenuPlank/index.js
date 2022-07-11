@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { Container } from "./styles";
 
-export function UnderMenuPlank({ active, children }) {
+export function UnderMenuPlank({ children, active }) {
   return <Container active={active}>{children}</Container>;
 }
 

@@ -13,10 +13,11 @@ export const Container = styled.div`
   height: 45px;
   display: flex;
   align-items: center;
-  padding: 0px 16px;
+  padding: 0 0 0 16px;
   ${COLORS.bluredBackground}
   backdrop-filter: blur(3px);
   border-radius: ${BORDER_RADIUS.standard};
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
   z-index: ${Z_INDEX_LIST.hidden};
@@ -29,6 +30,7 @@ export const Container = styled.div`
       visibility: visible;
       z-index: ${Z_INDEX_LIST.last};
     `}
+
   @media (max-width: ${BREAKPOINTS.tablet}) {
     width: calc(100% - 32px);
   }

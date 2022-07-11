@@ -7,4 +7,16 @@ export const data = [
     text: "Продукты",
     link: "/products",
   },
+  {
+    text: "Продукты",
+    link: "/products",
+  },
+  {
+    text: "Продукты",
+    link: "/products",
+  },
+  {
+    text: "Продукты",
+    link: "/products",
+  },
 ];

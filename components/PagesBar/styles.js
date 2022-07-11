@@ -3,10 +3,13 @@ import { BORDER_RADIUS, COLORS } from "../../common/styles/styles";
 
 export const Container = styled.div`
   width: 100%;
+  overflow-x: auto;
+  display: flex;
 `;
 
 export const List = styled.div`
   display: flex;
+  flex-wrap: nowrap;
 `;
 
 export const Item = styled.a`
@@ -22,6 +25,10 @@ export const Item = styled.a`
 
   &:first-child {
     margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 16px;
   }
 
   &:hover {
