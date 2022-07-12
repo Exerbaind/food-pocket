@@ -1,2 +1,2 @@
-export { UnderMenuPlank } from "./UnderMenuPlank";
+export { TransparentPlank } from "./TransparentPlank";
 export { Button } from "./Button";

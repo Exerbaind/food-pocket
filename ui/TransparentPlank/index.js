@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 
 import { Container } from "./styles";
 
-export function UnderMenuPlank({ children, active }) {
+export function TransparentPlank({ children, active }) {
   return <Container active={active}>{children}</Container>;
 }
 
-UnderMenuPlank.propTypes = {
+TransparentPlank.propTypes = {
   active: PropTypes.bool.isRequired,
   children: PropTypes.shape({}),
 };
 
-UnderMenuPlank.defaultProps = {
+TransparentPlank.defaultProps = {
   children: null,
 };

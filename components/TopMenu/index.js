@@ -77,9 +77,9 @@ export function TopMenu() {
         <Title>FoodPocket</Title>
         {renderIcons(iconsPayload)}
       </Container>
-      <ui.UnderMenuPlank active={showBottomMenu} fullscreenMobile={isMobile}>
+      <ui.TransparentPlank active={showBottomMenu} fullscreenMobile={isMobile}>
         {renderPlankContent(menuItemType)}
-      </ui.UnderMenuPlank>
+      </ui.TransparentPlank>
     </>
   );
 }
