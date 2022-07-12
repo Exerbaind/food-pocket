@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
+import { useRouter } from "next/router";
+import * as ui from "../../ui";
 
 import { data } from "./data";
 
-import { Container, List, Item } from "./styles";
+import { Container, List } from "./styles";
 
 const renderItem = (item, index) => {
   const { text, link } = item;
@@ -14,9 +14,13 @@ const renderItem = (item, index) => {
   const activeLink = router.pathname === link;
 
   return (
-    <Link href={link} passHref key={`${text}__${index}`}>
-      <Item active={activeLink}>{text}</Item>
-    </Link>
+    <ui.Button
+      lastChildMargin
+      text={text}
+      href={link}
+      activeLink={activeLink}
+      key={`${text}__${index}`}
+    />
   );
 };
 
