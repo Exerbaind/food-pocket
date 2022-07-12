@@ -6,7 +6,7 @@ export const ButtonLink = styled.a`
   padding: 5px 10px;
   background-color: ${COLORS.grey};
   border-radius: ${BORDER_RADIUS.standard};
-  margin-left: ${({ spaceBetween }) => (spaceBetween ? "16px" : "0")};
+  margin-left: ${({ spaceBetween }) => (spaceBetween ? "10px" : "0")};
   cursor: pointer;
   color: ${COLORS.black};
   font-size: 15px;
@@ -42,7 +42,7 @@ export const SimpleButton = styled.button`
   background-color: ${COLORS.grey};
   border-radius: ${BORDER_RADIUS.standard};
   border: none;
-  margin-left: ${({ spaceBetween }) => (spaceBetween ? "16px" : "0")};
+  margin-left: ${({ spaceBetween }) => (spaceBetween ? "10px" : "0")};
   cursor: pointer;
   color: ${COLORS.black};
   font-size: 15px;

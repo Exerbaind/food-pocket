@@ -13,7 +13,7 @@ export const Text = styled.p`
   font-size: 16px;
   user-select: none;
   font-family: "Rubik-Medium";
-  margin-right: 16px;
+  margin-right: 10px;
 `;
 
 export const List = styled.div`

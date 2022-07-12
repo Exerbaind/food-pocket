@@ -8,6 +8,7 @@ import {
 
 export const Container = styled.div`
   position: fixed;
+  padding: 0 16px;
   top: 65px;
   width: 1200px;
   height: 45px;
