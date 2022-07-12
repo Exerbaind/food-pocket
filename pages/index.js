@@ -1,11 +1,10 @@
-import { PropTypes } from "prop-types";
 import Seo from "../seo/mainSeo";
 
 import { initScreenType } from "../common/utils/initScreenType";
 
 import { wrapper } from "../services/store";
 import { handleScreenType } from "../services/app/appSlice";
-import fetchRequest from "../common/utils/fetchRequest";
+// import fetchRequest from "../common/utils/fetchRequest";
 
 import * as layouts from "../layouts";
 
@@ -24,7 +23,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
     const { isMobile } = initScreenType(context);
     store.dispatch(handleScreenType(isMobile));
-    const response = await fetchRequest("/api/dishes", "GET");
+    // const response = await fetchRequest("/api/dishes", "GET");
     // console.log(response);
     // if (response && response.error) {
     //   store.dispatch(handleError(response.error));

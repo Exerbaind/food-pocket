@@ -1,13 +1,12 @@
 import styled, { css } from "styled-components";
-import { MAIN_COLORS, TEXT_COLORS } from "../../common/styles/styles";
+// import { COLORS } from "../../common/styles/styles";
 
 export const S = {};
 
 S.UploadContainer = styled.div`
   margin-top: 30px;
   width: 100%;
-  border: 2px dashed
-    ${({ image }) => (image ? MAIN_COLORS.green : "rgba(242, 244, 247, 1)")};
+  border: 2px dashed;
   border-radius: 5px;
   height: 200px;
   position: relative;
@@ -25,10 +24,8 @@ S.UploadInput = styled.div`
 
 S.CustomizedUpload = styled.label`
   padding: 10px 20px;
-  background-color: ${MAIN_COLORS.green};
   border-radius: 5px;
   border: none;
-  color: ${TEXT_COLORS.whiteText};
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;

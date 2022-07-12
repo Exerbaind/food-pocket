@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BORDER_RADIUS, COLORS, BREAKPOINTS } from "../../common/styles/styles";
+import { BORDER_RADIUS, COLORS } from "../../common/styles/styles";
 
 export const Container = styled.div`
   width: 100%;
