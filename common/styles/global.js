@@ -31,4 +31,9 @@ a {
 span, p, h1, h2, h3, h4, h5, h6, button, label, input, a {
     font-family: 'Rubik-Regular';
 }
+
+a,div,button {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
 `;
