@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   menuItemType: null,
   showBottomMenu: false,
+  searchType: "dish",
 };
 
 const menuSlice = createSlice({
@@ -15,9 +16,13 @@ const menuSlice = createSlice({
     handleBottomMenu: (state) => {
       state.showBottomMenu = !state.showBottomMenu;
     },
+    handleSearchType: (state, action) => {
+      state.searchType = action.payload;
+    },
   },
 });
 
-export const { handleMenuItemType, handleBottomMenu } = menuSlice.actions;
+export const { handleMenuItemType, handleBottomMenu, handleSearchType } =
+  menuSlice.actions;
 
 export default menuSlice.reducer;

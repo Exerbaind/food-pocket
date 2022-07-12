@@ -6,7 +6,7 @@ export const ButtonLink = styled.a`
   padding: 5px 10px;
   background-color: ${COLORS.grey};
   border-radius: ${BORDER_RADIUS.standard};
-  margin-left: 10px;
+  margin-left: ${({ spaceBetween }) => (spaceBetween ? "16px" : "0")};
   cursor: pointer;
   color: ${COLORS.black};
   font-size: 15px;
@@ -37,11 +37,12 @@ export const ButtonLink = styled.a`
     `}
 `;
 
-export const Button = styled.div`
+export const SimpleButton = styled.button`
   padding: 5px 10px;
   background-color: ${COLORS.grey};
   border-radius: ${BORDER_RADIUS.standard};
-  margin-left: 10px;
+  border: none;
+  margin-left: ${({ spaceBetween }) => (spaceBetween ? "16px" : "0")};
   cursor: pointer;
   color: ${COLORS.black};
   font-size: 15px;
@@ -72,8 +73,8 @@ export const Button = styled.div`
     background-color: ${COLORS.white};
   }
 
-  ${({ active }) =>
-    active &&
+  ${({ activeButton }) =>
+    activeButton &&
     css`
       background-color: ${COLORS.primary};
       color: ${COLORS.white};

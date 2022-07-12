@@ -20,6 +20,7 @@ const renderItem = (item, index) => {
       href={link}
       activeLink={activeLink}
       key={`${text}__${index}`}
+      spaceBetween
     />
   );
 };

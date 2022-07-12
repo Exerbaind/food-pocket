@@ -1,13 +1,20 @@
 import React from "react";
+import * as ui from "../../ui";
 
 import { data } from "./data";
 
-import { Container, Text, List, Item } from "./styles";
+import { Container, Text, List } from "./styles";
 
 const renderItem = (item, index) => {
   const { text, stringId } = item;
-
-  return <Item key={`${stringId}__${index}`}>{text}</Item>;
+  return (
+    <ui.Button
+      text={text}
+      key={`${stringId}__${index}`}
+      lastChildMargin
+      spaceBetween
+    />
+  );
 };
 
 export function ClientHandlerBar() {

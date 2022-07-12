@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-import { ButtonLink } from "./styles";
+import { ButtonLink, SimpleButton } from "./styles";
 
 export function Button({
   text,
@@ -11,6 +11,9 @@ export function Button({
   lastChildMargin,
   key,
   fullWidth,
+  activeButton,
+  onClick,
+  spaceBetween,
 }) {
   if (href) {
     return (
@@ -19,6 +22,7 @@ export function Button({
           active={activeLink}
           lastChildMargin={lastChildMargin}
           fullWidth={fullWidth}
+          spaceBetween={spaceBetween}
         >
           {text}
         </ButtonLink>
@@ -26,7 +30,16 @@ export function Button({
     );
   }
 
-  return <Button lastChildMargin={lastChildMargin}>{text}</Button>;
+  return (
+    <SimpleButton
+      lastChildMargin={lastChildMargin}
+      activeButton={activeButton}
+      onClick={onClick}
+      spaceBetween={spaceBetween}
+    >
+      {text}
+    </SimpleButton>
+  );
 }
 
 Button.propTypes = {
@@ -36,6 +49,9 @@ Button.propTypes = {
   lastChildMargin: PropTypes.bool,
   key: PropTypes.string,
   fullWidth: PropTypes.bool,
+  activeButton: PropTypes.bool,
+  onClick: PropTypes.func,
+  spaceBetween: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -44,4 +60,7 @@ Button.defaultProps = {
   lastChildMargin: false,
   key: null,
   fullWidth: false,
+  activeButton: false,
+  spaceBetween: false,
+  onClick: () => {},
 };
