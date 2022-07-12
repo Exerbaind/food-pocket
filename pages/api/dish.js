@@ -8,7 +8,7 @@ async function addDish(req, res) {
     const db = client.db("RestaurantsDatabase");
     await db.collection("DishesList").insertOne(JSON.parse(req.body));
     return res.json({
-      message: "Блюдо успешно отправлено!",
+      data: "Блюдо успешно отправлено!",
       success: true,
     });
   } catch (error) {
@@ -25,7 +25,7 @@ async function deleteDish(req, res) {
       .collection("DishesList")
       .deleteOne({ _id: new ObjectId(req.body) });
     return res.json({
-      message: "Блюдо успешно удалено!",
+      data: "Блюдо успешно удалено!",
       success: true,
     });
   } catch (error) {

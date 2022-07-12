@@ -7,7 +7,7 @@ async function getDishes(req, res) {
     const db = client.db("RestaurantsDatabase");
     const data = await db.collection("DishesList").find({}).toArray();
     return res.json({
-      message: JSON.parse(JSON.stringify(data)),
+      data: JSON.parse(JSON.stringify(data)),
       success: true,
     });
   } catch (error) {

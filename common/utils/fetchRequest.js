@@ -29,37 +29,26 @@ export default async function fetchRequest(url, method, body = {}) {
   const rootUrl = dev
     ? "http://localhost:3000"
     : "https://food-pocket.vercel.app";
-  let data;
-  let response;
-  if (method === "GET") {
-    try {
+
+  try {
+    let data;
+    let response;
+    if (method === "GET") {
       data = await fetchGET(rootUrl, url);
       response = await data.json();
-    } catch (error) {
-      console.error(error);
-      return { error: "Что-то пошло не так" };
     }
-  }
 
-  if (method === "POST") {
-    try {
+    if (method === "POST") {
       data = await fetchPOST(rootUrl, url, body);
       response = await data.json();
-    } catch (error) {
-      console.error(error);
-      return { error: "Что-то пошло не так" };
     }
-  }
 
-  if (method === "DELETE") {
-    try {
+    if (method === "DELETE") {
       data = await fetchDELETE(rootUrl, url, body);
       response = await data.json();
-    } catch (error) {
-      console.error(error);
-      return { error: "Что-то пошло не так" };
     }
+    return response;
+  } catch (error) {
+    return { error: "Что-то пошло не так" };
   }
-
-  return response;
 }
