@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext js,jsx",
-    "lint:fix": "eslint . --ext js,jsx --fix",
-    "test": "jest --watch"
+    "test": "start-server-and-test dev 3000 cypress:open",
+    "cypress:open": "cypress open",
+    "lint:fix": "eslint . --ext js,jsx --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
@@ -28,10 +29,9 @@
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/eslint-parser": "^7.18.2",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.5",
+    "cypress": "^10.3.0",
     "eslint": "^8.18.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.1.5",
@@ -41,9 +41,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^28.1.2",
-    "jest-environment-jsdom": "^28.1.2",
     "prettier": "^2.7.1",
-    "react-test-renderer": "^18.2.0"
+    "start-server-and-test": "^1.14.0"
   }
 }
